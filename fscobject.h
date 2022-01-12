@@ -1,0 +1,38 @@
+#ifndef FSCOBJECT_H
+#define FSCOBJECT_H
+
+#include <QString>
+#include <QVariant>
+#include <QVector>
+#include <QPair>
+
+class FSCObject
+{
+public:
+    FSCObject();
+    FSCObject(const QString &_objectName);
+
+    void CreateValue(const QString &key, int val);
+    void CreateValue(const QString &key, double val);
+    void CreateValue(const QString &key, QString val);
+    void CreateValue(const QString &key, bool val);
+
+    QString GetObjectName(){return objectName;}
+    QString Data();
+    QVariant GetValue(const QString &key);
+    void SetObjectName(const QString &_objectName){    objectName = _objectName;    }
+    void DisplayData();
+
+
+private:
+     QString objectName;
+
+     QVector< QPair< QString, int> > intvalues;
+     QVector< QPair< QString, double> > doublevalues;
+     QVector< QPair< QString, QString> > stringvalues;
+     QVector< QPair< QString, bool> > boolvalues;
+
+
+};
+
+#endif // FSCOBJECT_H
