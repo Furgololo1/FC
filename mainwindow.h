@@ -5,10 +5,11 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QList>
-#include <QJs
 
 #include "editor.h"
 #include "editorbutton.h"
+#include "fscdocument.h"
+#include "fscobject.h"
 //#include "style_sheets.h"
 
 QT_BEGIN_NAMESPACE
@@ -39,6 +40,8 @@ private slots:
     void on_SaveFileAs();
     void on_OpenEditor(int index);
 
+
+    void on_pushButton_clicked();
 
 private:
 

@@ -57,11 +57,14 @@ void FSCDocument::ReadFromFile()
         while(true){
             line = file->readLine();
             if(line.contains('}', Qt::CaseSensitivity::CaseSensitive))break;
-            value.toInt(conversionOk);
-            value = line.mid(line.indexOf(':') + 1, line.indexOf(';') - line.indexOf(':') - 1);
-                //if(conversionOk)
 
-            obj->CreateValue(line.left(line.indexOf(':')), value);
+            value = line.mid(line.indexOf(':') + 1, line.indexOf(';') - line.indexOf(':') - 1);
+            int intval = value.toInt(conversionOk);
+                if(conversionOk)
+                    obj->CreateValue(line.left(line.indexOf(':')), intval);
+                else
+                    obj->CreateValue(line.left(line.indexOf(':')), value);
+                delete conversionOk;
         }
         objects.push_back(*obj);
         obj->DisplayData();

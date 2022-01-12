@@ -87,3 +87,34 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
 }
 
+
+void MainWindow::on_pushButton_clicked()
+{
+    FSCDocument doc("config.txt");
+    FSCObject obj1("int");
+    obj1.CreateValue("keyword", QStringLiteral("//bint//b"));
+    obj1.CreateValue("R", 40);
+    obj1.CreateValue("G", 50);
+    obj1.CreateValue("B", 255);
+    obj1.CreateValue("bold", false);
+    obj1.CreateValue("font", QStringLiteral("Arial Black"));
+
+    FSCObject obj2("double");
+    obj2.CreateValue("keyword", QStringLiteral("//bdouble//b"));
+    obj2.CreateValue("R", 102);
+    obj2.CreateValue("G", 28);
+    obj2.CreateValue("B", 215);
+    obj2.CreateValue("bold", true);
+    obj2.CreateValue("font", QStringLiteral("Arial Black"));
+
+//     doc.AppendObject(obj1);
+//     doc.AppendObject(obj2);
+
+//     doc.SaveObjectsToFile();
+
+ //   qDebug()<<obj1.GetValue("font").toString();
+    doc.ReadFromFile();
+
+
+}
+
