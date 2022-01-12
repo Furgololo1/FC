@@ -14,14 +14,18 @@ SOURCES += \
     highlighter.cpp \
     main.cpp \
     mainwindow.cpp \
-    mainwindowslots.cpp
+    mainwindowslots.cpp \
+    fscdocument.cpp \
+    fscobject.cpp
 
 HEADERS += \
     editor.h \
     editorbutton.h \
     highlighter.h \
     mainwindow.h \
-    style_sheets.h
+    style_sheets.h \
+    fscdocument.h \
+    fscobject.h
 
 FORMS += \
     mainwindow.ui

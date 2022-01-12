@@ -11,7 +11,7 @@
 #include "highlighter.h"
 
 
-class Editor//as
+class Editor
 {
 
 public:

@@ -32,7 +32,6 @@ private:
 
     QList< FSCObject > objects;
 
-//    void
 
 };
 
