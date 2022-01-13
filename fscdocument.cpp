@@ -31,11 +31,9 @@ void FSCDocument::SaveObjectsToFile()
 
 QList<FSCObject>* FSCDocument::GetObjectsFromFile()
 {
-    QList< FSCObject > list;
+    if(objects.isEmpty()) return nullptr;
 
-    if(list.isEmpty()) return nullptr;
-
-    return &list;
+    return &objects;
 }
 
 void FSCDocument::ReadFromFile()
@@ -61,16 +59,33 @@ void FSCDocument::ReadFromFile()
 
             pipeIndex = line.indexOf('|');
             value = line.mid(line.indexOf(':') + 1, pipeIndex - line.indexOf(':') - 1);
-            type = line.mid(pipeIndex+1, line.indexOf('^'));
-            //type = line.mid(firstpipe, line.indexOf('|', ))
+            type = line.mid(pipeIndex+1, line.indexOf('^')-2 - pipeIndex+1);
 
+            if(type == "int")
+                obj->CreateValue(line.left(line.indexOf(':')), value.toInt());
+            else if(type == "double")
+                obj->CreateValue(line.left(line.indexOf(':')), value.toDouble());
+            else if(type == "bool")
+                obj->CreateValue(line.left(line.indexOf(':')), value == "1" ? true : false);
+            else
+                obj->CreateValue(line.left(line.indexOf(':')), value);
 
-            obj->CreateValue(line.left(line.indexOf(':')), value);
+//            qDebug()<<"key: "<<line.left(line.indexOf(':')) << " value: " << value << " type: "<<type;
+
         }
         objects.push_back(*obj);
-        obj->DisplayData();
-        delete obj;
+//        obj->DisplayData();
+//        delete obj;
     }
+}
+
+FSCObject FSCDocument::GetObjectByName(const QString &_name)
+{
+    for(auto &obj : objects)
+        if(obj.GetObjectName() == _name)
+            return obj;
+
+    return FSCObject();
 }
 
 
