@@ -48,7 +48,8 @@ void FSCDocument::ReadFromFile()
 
     QString line;
     QString value;
-    bool *conversionOk = new bool(true);
+    QString type;
+    int pipeIndex = 0;
 
     while(!file->atEnd()){
         line = file->readLine();
@@ -58,19 +59,18 @@ void FSCDocument::ReadFromFile()
             line = file->readLine();
             if(line.contains('}', Qt::CaseSensitivity::CaseSensitive))break;
 
-            value = line.mid(line.indexOf(':') + 1, line.indexOf(';') - line.indexOf(':') - 1);
-            int intval = value.toInt(conversionOk);
-                if(conversionOk)
-                    obj->CreateValue(line.left(line.indexOf(':')), intval);
-                else
-                    obj->CreateValue(line.left(line.indexOf(':')), value);
-                delete conversionOk;
+            pipeIndex = line.indexOf('|');
+            value = line.mid(line.indexOf(':') + 1, pipeIndex - line.indexOf(':') - 1);
+            type = line.mid(pipeIndex+1, line.indexOf('^'));
+            //type = line.mid(firstpipe, line.indexOf('|', ))
+
+
+            obj->CreateValue(line.left(line.indexOf(':')), value);
         }
         objects.push_back(*obj);
         obj->DisplayData();
         delete obj;
     }
-
 }
 
 
