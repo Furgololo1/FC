@@ -12,6 +12,7 @@ SOURCES += \
     editor.cpp \
     editorbutton.cpp \
     highlighter.cpp \
+    highlightpreferences.cpp \
     main.cpp \
     mainwindow.cpp \
     mainwindowslots.cpp \
@@ -22,6 +23,7 @@ HEADERS += \
     editor.h \
     editorbutton.h \
     highlighter.h \
+    highlightpreferences.h \
     mainwindow.h \
     style_sheets.h \
     fscdocument.h \

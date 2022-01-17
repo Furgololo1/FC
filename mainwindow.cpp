@@ -119,6 +119,5 @@ void MainWindow::on_pushButton_clicked()
     obj.DisplayData();
 
 
-
 }
 
