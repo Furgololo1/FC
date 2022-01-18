@@ -30,6 +30,8 @@ void MainWindow::ConfigureGUI()
 {
     ui->menubar->setStyleSheet(StyleSheetsGUI::menuBarStyle);
     ui->menuFile->setStyleSheet(StyleSheetsGUI::menuStyle);
+    ui->menuEdit->setStyleSheet(StyleSheetsGUI::menuStyle);
+    ui->menuPreferences->setStyleSheet(StyleSheetsGUI::menuStyle);
     ui->stackedWidget->setStyleSheet(StyleSheetsGUI::stackWidgetStyle);
 }
 
@@ -43,6 +45,7 @@ void MainWindow::CreateEditor(const QString &filename)
 
      QSize size = this->size();
      newTab->resize(size.width()-50, size.height()-80);
+
 
      //new editor
      if(filename == nullptr)

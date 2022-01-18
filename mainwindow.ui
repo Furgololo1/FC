@@ -62,7 +62,19 @@ background-color: #262626;
     </property>
     <addaction name="separator"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuPreferences">
+    <property name="title">
+     <string>Preferences</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuPreferences"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="newFile">
@@ -84,6 +96,11 @@ background-color: #262626;
   <action name="saveFile">
    <property name="text">
     <string>Save File</string>
+   </property>
+  </action>
+  <action name="actionHighLights">
+   <property name="text">
+    <string>HighLights</string>
    </property>
   </action>
  </widget>

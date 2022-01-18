@@ -10,6 +10,7 @@
 #include "editorbutton.h"
 #include "fscdocument.h"
 #include "fscobject.h"
+#include "whighlightpreferences.h"
 //#include "style_sheets.h"
 
 QT_BEGIN_NAMESPACE
@@ -39,7 +40,7 @@ private slots:
     void on_SaveFile();
     void on_SaveFileAs();
     void on_OpenEditor(int index);
-
+    void on_highlightPref();
 
     void on_pushButton_clicked();
 

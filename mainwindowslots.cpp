@@ -9,6 +9,7 @@ void MainWindow::Connections()
     ui->menuFile->addAction("Open File ...", this, &MainWindow::on_OpenFile, QKeySequence::Open);
     ui->menuFile->addAction("Save File", this, &MainWindow::on_SaveFile, QKeySequence::Save);
     ui->menuFile->addAction("Save File As ...", this, &MainWindow::on_SaveFileAs, QKeySequence::SaveAs);
+    ui->menuPreferences->addAction("Highlights", this, &MainWindow::on_highlightPref);
 }
 
 void MainWindow::on_OpenFile()
@@ -45,4 +46,11 @@ void MainWindow::on_OpenEditor(int index)
             b->setStyleSheet(StyleSheetsGUI::editorButtonStyle);
 
     }
+}
+
+void MainWindow::on_highlightPref()
+{
+    WHighlightPreferences *whp = new WHighlightPreferences();
+    ui->stackedWidget->addWidget(whp);
+
 }

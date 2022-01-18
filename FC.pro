@@ -12,25 +12,26 @@ SOURCES += \
     editor.cpp \
     editorbutton.cpp \
     highlighter.cpp \
-    highlightpreferences.cpp \
     main.cpp \
     mainwindow.cpp \
     mainwindowslots.cpp \
     fscdocument.cpp \
-    fscobject.cpp
+    fscobject.cpp \
+    whighlightpreferences.cpp
 
 HEADERS += \
     editor.h \
     editorbutton.h \
     highlighter.h \
-    highlightpreferences.h \
     mainwindow.h \
     style_sheets.h \
     fscdocument.h \
-    fscobject.h
+    fscobject.h \
+    whighlightpreferences.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    whighlightpreferences.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
