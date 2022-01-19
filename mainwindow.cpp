@@ -93,7 +93,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
 void MainWindow::on_pushButton_clicked()
 {
-    FSCDocument doc("config.txt");
+    FSCDocument doc("config/C++.txt");
 //    FSCObject obj1("int");
 //    obj1.CreateValue("keyword", QStringLiteral("//bint//b"));
 //    obj1.CreateValue("R", 40);
@@ -117,9 +117,10 @@ void MainWindow::on_pushButton_clicked()
  //   qDebug()<<obj1.GetValue("font").toString();
     doc.ReadFromFile();
 
-    FSCObject obj = doc.GetObjectByName(QStringLiteral("int"));
+    FSCObject obj = doc.GetObjectByName(QStringLiteral("double"));
 
-    obj.DisplayData();
+    qDebug()<<"R: "<<obj.GetValue("R");
+    //obj.DisplayData();
 
 
 }
