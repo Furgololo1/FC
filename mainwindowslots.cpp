@@ -51,6 +51,7 @@ void MainWindow::on_OpenEditor(int index)
 void MainWindow::on_highlightPref()
 {
     WHighlightPreferences *whp = new WHighlightPreferences();
-    ui->stackedWidget->addWidget(whp);
+    //ui->stackedWidget->addWidget(whp);
+    whp->show();
 
 }

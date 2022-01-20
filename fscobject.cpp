@@ -36,6 +36,34 @@ void FSCObject::CreateValue(const QString &key, bool val)
     boolvalues.emplace_back(QPair< QString, bool >( key, val));
 }
 
+void FSCObject::ChangeValue(const QString &key, int val)
+{
+     for(auto &iv : intvalues)
+         if(iv.first == key)
+             iv.second = val;
+}
+
+void FSCObject::ChangeValue(const QString &key, double val)
+{
+    for(auto &dv : doublevalues)
+        if(dv.first == key)
+            dv.second = val;
+}
+
+void FSCObject::ChangeValue(const QString &key, QString val)
+{
+    for(auto &sv : stringvalues)
+        if(sv.first == key)
+            sv.second = val;
+}
+
+void FSCObject::ChangeValue(const QString &key, bool val)
+{
+    for(auto &bv : boolvalues)
+        if(bv.first == key)
+            bv.second = val;
+}
+
 
 QString FSCObject::Data()
 {

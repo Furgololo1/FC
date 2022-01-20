@@ -17,11 +17,17 @@ public:
     void CreateValue(const QString &key, QString val);
     void CreateValue(const QString &key, bool val);
 
+    void ChangeValue(const QString &key, int val);
+    void ChangeValue(const QString &key, double val);
+    void ChangeValue(const QString &key, QString val);
+    void ChangeValue(const QString &key, bool val);
+
     QString GetObjectName(){return objectName;}
     QString Data();
     QVariant GetValue(const QString &key);
     void SetObjectName(const QString &_objectName){    objectName = _objectName;    }
     void DisplayData();
+
 
 
 private:
