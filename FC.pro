@@ -14,19 +14,32 @@ SOURCES += \
     highlighter.cpp \
     main.cpp \
     mainwindow.cpp \
-    mainwindowslots.cpp
+    mainwindowslots.cpp \
+    fscdocument.cpp \
+    fscobject.cpp \
+    whighlightpreferences.cpp
 
 HEADERS += \
     editor.h \
     editorbutton.h \
     highlighter.h \
     mainwindow.h \
-    style_sheets.h
+    style_sheets.h \
+    fscdocument.h \
+    fscobject.h \
+    whighlightpreferences.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    whighlightpreferences.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    images.qrc
+
+DISTFILES += \
+    style.qss

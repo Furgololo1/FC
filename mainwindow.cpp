@@ -9,7 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    //setWindowFlags( );
+    setStyleSheet(StyleSheetsGUI::windowStyle);
     ConfigureGUI();
     Connections();
 
@@ -30,7 +31,17 @@ void MainWindow::ConfigureGUI()
 {
     ui->menubar->setStyleSheet(StyleSheetsGUI::menuBarStyle);
     ui->menuFile->setStyleSheet(StyleSheetsGUI::menuStyle);
+    ui->menuEdit->setStyleSheet(StyleSheetsGUI::menuStyle);
+    ui->menuPreferences->setStyleSheet(StyleSheetsGUI::menuStyle);
     ui->stackedWidget->setStyleSheet(StyleSheetsGUI::stackWidgetStyle);
+
+//    QFile styleFile( "style.qss" );
+//    styleFile.open( QFile::ReadOnly );
+
+//    // Apply the loaded stylesheet
+//    QString style( styleFile.readAll() );
+//    this->setStyleSheet( style );
+
 }
 
 void MainWindow::CreateEditor(const QString &filename)
@@ -43,6 +54,7 @@ void MainWindow::CreateEditor(const QString &filename)
 
      QSize size = this->size();
      newTab->resize(size.width()-50, size.height()-80);
+
 
      //new editor
      if(filename == nullptr)
@@ -86,4 +98,42 @@ void MainWindow::resizeEvent(QResizeEvent *event)
         e->on_resize(ui->stackedWidget->size().width(), ui->stackedWidget->size().height());
 
 }
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    FSCDocument doc("config/C++.txt");
+//    FSCObject obj1("int");
+//    obj1.CreateValue("keyword", QStringLiteral("//bint//b"));
+//    obj1.CreateValue("R", 40);
+//    obj1.CreateValue("G", 50);
+//    obj1.CreateValue("B", 255);
+//    obj1.CreateValue("bold", false);
+//    obj1.CreateValue("font", QStringLiteral("Arial Black"));
+
+//    FSCObject obj2("double");
+//    obj2.CreateValue("keyword", QStringLiteral("//bdouble//b"));
+//    obj2.CreateValue("R", 102);
+//    obj2.CreateValue("G", 28);
+//    obj2.CreateValue("B", 215);
+//    obj2.CreateValue("bold", true);
+//    obj2.CreateValue("font", QStringLiteral("Arial Black"));
+
+//     doc.AppendObject(obj1);
+//     doc.AppendObject(obj2);
+//     doc.SaveObjectsToFile();
+
+ //   qDebug()<<obj1.GetValue("font").toString();
+    doc.ReadFromFile();
+
+}
+
+
+
+
+
+
+
+
+
 
