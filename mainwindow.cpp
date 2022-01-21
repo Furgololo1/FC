@@ -34,6 +34,14 @@ void MainWindow::ConfigureGUI()
     ui->menuEdit->setStyleSheet(StyleSheetsGUI::menuStyle);
     ui->menuPreferences->setStyleSheet(StyleSheetsGUI::menuStyle);
     ui->stackedWidget->setStyleSheet(StyleSheetsGUI::stackWidgetStyle);
+
+//    QFile styleFile( "style.qss" );
+//    styleFile.open( QFile::ReadOnly );
+
+//    // Apply the loaded stylesheet
+//    QString style( styleFile.readAll() );
+//    this->setStyleSheet( style );
+
 }
 
 void MainWindow::CreateEditor(const QString &filename)

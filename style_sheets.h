@@ -6,7 +6,7 @@
 namespace StyleSheetsGUI {
 
     const QString windowStyle(
-            "border: none; background-color: #262626; "
+            "QMainWindow{border: none; background-color: #262626; }"
             );
 
     const QString menuBarStyle(
@@ -54,4 +54,40 @@ namespace CPPFormat {
 
 
 }
+
+/*QComboBox QAbstractItemView::item {
+    height: 25px;
+}
+
+QListView::item {
+    background: white;
+}
+
+QListView::item:hover {
+    background: #BDD7FD;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/images/images/CBArrow.png);
+}
+
+QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 1px 2px 1px 2px; # For the text content in the combo box
+    min-width: 9em; # The minimum width of the combo box
+}
+*/
 

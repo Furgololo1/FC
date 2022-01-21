@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>520</width>
-    <height>610</height>
+    <height>574</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -32,11 +32,52 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{
-	border: 5px solid #318AFF; 
+	border: 1px solid #318AFF; 
 	background-color: #262626; 
 	color: white;
 	font-family: Consolas, 'Courier New', monospace;
-}</string>
+}
+
+QAbstractItemView::item {
+    height: 25px;
+}
+
+QScrollBar:vertical {
+     border: none;
+     background: #262626;
+     width: 15px;
+     margin: 22px 0 22px 0;
+ }
+ QScrollBar::handle:vertical {
+     background: #318AFF;
+     min-height: 20px;
+ }
+ QScrollBar::add-line:vertical {
+     border: 1px solid #318AFF;
+     background: #262626;
+     height: 20px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:vertical {
+     border: 1px solid #318AFF;
+     background: #262626;
+     height: 20px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+     border: 2px solid #262626;
+     width: 3px;
+     height: 3px;
+     background: transparent;
+ }
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }
+</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -106,12 +147,35 @@ border-bottom: 2px solid #161616;
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QComboBox{
-border-left:1px solid #318AFF;
-border-right:none;
-border-top:1px solid #318AFF;
-border-bottom:1px solid #318AFF;
-}</string>
+    <string notr="true">QAbstractItemView::item:hover {
+	border: none;
+    background: #318AFF;
+	font-weight: bold;
+}
+
+QComboBox::down-arrow {
+    image: url(:/images/images/CBArrow.png);
+	height:18px;
+}
+
+QComboBox::drop-down:button{
+background: #262626;
+border-left: 1px solid #318AFF;
+border-right: 1px solid #318AFF;
+}
+QComboBox {
+	border-left:1px solid #318AFF;
+	border-right:none;
+	border-top:1px solid #318AFF;
+	border-bottom:1px solid #318AFF;
+}
+
+
+
+</string>
+   </property>
+   <property name="frame">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QListWidget" name="keywordList">
@@ -365,7 +429,7 @@ border-bottom: 2px solid #161616;
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>330</y>
+     <y>290</y>
      <width>160</width>
      <height>30</height>
     </rect>
@@ -423,7 +487,7 @@ border:1px solid #318AFF;
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>290</y>
+     <y>250</y>
      <width>160</width>
      <height>30</height>
     </rect>
@@ -481,7 +545,7 @@ border:1px solid #318AFF;
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>370</y>
+     <y>330</y>
      <width>160</width>
      <height>30</height>
     </rect>
@@ -539,21 +603,21 @@ left: 7 px;
   <widget class="QComboBox" name="fontComboBox">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>250</y>
-     <width>160</width>
+     <x>260</x>
+     <y>370</y>
+     <width>200</width>
      <height>30</height>
     </rect>
    </property>
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
    <property name="maximumSize">
     <size>
-     <width>175</width>
+     <width>200</width>
      <height>30</height>
     </size>
    </property>
@@ -564,20 +628,39 @@ left: 7 px;
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QComboBox{
-border-left:1px solid #318AFF;
-border-right:none;
-border-top:1px solid #318AFF;
-border-bottom:1px solid #318AFF;
-}
-
-QComboBox::drop-down {
-
+    <string notr="true">
+QAbstractItemView::item:hover {
+	border: none;
+    background: #318AFF;
+	font-weight:bold;
 }
 
 QComboBox::down-arrow {
-image: url(:/images/images/CBArrow.png);
-}</string>
+    image: url(:/images/images/CBArrow.png);
+	height:18px;
+}
+
+QComboBox::drop-down:button{
+background: #262626;
+border-left: 1px solid #318AFF;
+border-right: 1px solid #318AFF;
+}
+
+QComboBox {
+	border-left:1px solid #318AFF;
+	border-right:none;
+	border-top:1px solid #318AFF;
+	border-bottom:1px solid #318AFF;
+}
+
+
+</string>
+   </property>
+   <property name="editable">
+    <bool>false</bool>
+   </property>
+   <property name="frame">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="saveButton">
@@ -615,6 +698,12 @@ border-left:none;
 border-right:none;
 border-top:1px solid #318AFF;
 border-bottom:1px solid #318AFF;
+}
+
+QPushButton:hover{
+background-color: #2466BD;
+border:none;
+color: black;
 }</string>
    </property>
    <property name="text">
@@ -775,9 +864,9 @@ border-bottom:1px solid #318AFF;
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>470</y>
-     <width>391</width>
-     <height>101</height>
+     <y>460</y>
+     <width>390</width>
+     <height>100</height>
     </rect>
    </property>
    <property name="font">

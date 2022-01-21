@@ -1,6 +1,8 @@
 #include "whighlightpreferences.h"
 #include "ui_whighlightpreferences.h"
 
+#include <QStyledItemDelegate>
+
 #include "style_sheets.h"
 
 WHighlightPreferences::WHighlightPreferences(QWidget *parent) :
@@ -89,7 +91,7 @@ void WHighlightPreferences::on_ReadKeywordsValues(const QString &kw)
     ui->lineEdit_R->setText(fscobj->GetValue("R").toString());
     ui->lineEdit_G->setText(fscobj->GetValue("G").toString());
     ui->lineEdit_B->setText(fscobj->GetValue("B").toString());
-    ui->fontComboBox->setCurrentText(fscobj->GetValue("font").toString());
+    //ui->fontComboBox->setCurrentText(fscobj->GetValue("font").toString());
 
     ui->textPreview->setText(kw);
 
