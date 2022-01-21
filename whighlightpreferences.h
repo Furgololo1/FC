@@ -33,6 +33,14 @@ private slots:
 
     void on_saveButton_clicked();
 
+    void on_fontComboBox_currentTextChanged(const QString &arg1);
+
+    void on_cbBold_stateChanged(int arg1);
+
+    void on_cbItalic_stateChanged(int arg1);
+
+    void on_cbUnderline_stateChanged(int arg1);
+
 private:
     Ui::WHighlightPreferences *ui;
 
@@ -41,13 +49,21 @@ private:
     FSCDocument *document = nullptr;
     FSCObject *fscobj = nullptr;
 
-    //variables for colorpreview color
+    QString keyword;
+
+    //variables for text preview
     QString r = "0";
     QString g = "0";
     QString b = "0";
+    QString font = "Consolas";
+    bool bold = false;
+    bool italic = false;
+    bool underline = false;
 
     void ReadLanguages();
+    void ReadFonts();
     void ChangePreviewColor();
+    void ChangePreviewText();
 
 
 

@@ -9,7 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    //setWindowFlags( );
+    setStyleSheet(StyleSheetsGUI::windowStyle);
     ConfigureGUI();
     Connections();
 
@@ -117,11 +118,14 @@ void MainWindow::on_pushButton_clicked()
  //   qDebug()<<obj1.GetValue("font").toString();
     doc.ReadFromFile();
 
-    FSCObject obj = doc.GetObjectByName(QStringLiteral("double"));
-
-    qDebug()<<"R: "<<obj.GetValue("R");
-    //obj.DisplayData();
-
-
 }
+
+
+
+
+
+
+
+
+
 

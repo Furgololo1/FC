@@ -5,14 +5,18 @@
 
 namespace StyleSheetsGUI {
 
+    const QString windowStyle(
+            "border: none; background-color: #262626; "
+            );
+
     const QString menuBarStyle(
             "QMenuBar{background-color: #161616; color: #DCE4FF; font-size: 16px; font-family: Consolas, 'Courier New', monospace; font-size: 16px;} "
-            "QMenuBar::item::selected{background-color: #161616;  color: #4050ff;}"
+            "QMenuBar::item::selected{background-color: #161616;  color: #318AFF;}"
             );
 
     const QString menuStyle(
-            "QMenu{background-color: #161616; color: #DCE4FF; font-size: 16px; border: 1px solid #4050ff; font-family: Consolas, 'Courier New', monospace; font-size: 16px;}"
-            "QMenu::item::selected{background-color: #161616; color: #4050ff;}"
+            "QMenu{background-color: #161616; color: #DCE4FF; font-size: 16px; border: 1px solid #318AFF; font-family: Consolas, 'Courier New', monospace; font-size: 16px;}"
+            "QMenu::item::selected{background-color: #161616; color: #318AFF;}"
             );
 
     const QString editorStyle(
@@ -37,9 +41,9 @@ namespace StyleSheetsGUI {
             );
 
     const QString currentEditorButtonStyle(
-            "QPushButton{border: 1px solid #161616; background-color: #161616; color: #4050ff;"
+            "QPushButton{border: 1px solid #161616; background-color: #161616; color: #318AFF;"
             "font-family: Consolas, 'Courier New', monospace; font-size: 16px; border-top: none; border-right:none;} "
-            "QPushButton::hover{border: none; background-color: #161616; color: #4050ff;}"
+            "QPushButton::hover{border: none; background-color: #161616; color: #318AFF;}"
             );
 
 }

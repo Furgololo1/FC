@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>514</width>
+    <width>520</width>
     <height>610</height>
    </rect>
   </property>
@@ -22,17 +22,27 @@
     <height>16777215</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Consolas</family>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QWidget{
+	border: 5px solid #318AFF; 
+	background-color: #262626; 
+	color: white;
+	font-family: Consolas, 'Courier New', monospace;
+}</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>20</y>
+     <y>30</y>
      <width>220</width>
      <height>40</height>
     </rect>
@@ -51,11 +61,19 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+border-left: none;
+border-right:none;
+border-top: 2px solid #161616;
+border-bottom: 2px solid #161616;
+}</string>
    </property>
    <property name="text">
     <string>Choose Language</string>
@@ -68,7 +86,7 @@
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>20</y>
+     <y>30</y>
      <width>220</width>
      <height>40</height>
     </rect>
@@ -81,11 +99,19 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox{
+border-left:1px solid #318AFF;
+border-right:none;
+border-top:1px solid #318AFF;
+border-bottom:1px solid #318AFF;
+}</string>
    </property>
   </widget>
   <widget class="QListWidget" name="keywordList">
@@ -108,6 +134,11 @@
      <width>175</width>
      <height>500</height>
     </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QListWidget{
+border:1px solid #161616;
+}</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -133,11 +164,19 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+border-left: none;
+border-right:none;
+border-top: 2px solid #161616;
+border-bottom: 2px solid #161616;
+}</string>
    </property>
    <property name="text">
     <string>Keywords</string>
@@ -169,11 +208,19 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+border-left: none;
+border-right:none;
+border-top: 2px solid #161616;
+border-bottom: 2px solid #161616;
+}</string>
    </property>
    <property name="text">
     <string>Values</string>
@@ -205,11 +252,19 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+border-left: none;
+border-right:none;
+border-top: 2px solid #161616;
+border-bottom: 2px solid #161616;
+}</string>
    </property>
    <property name="text">
     <string>R</string>
@@ -241,11 +296,19 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+border-left: none;
+border-right:none;
+border-top: 2px solid #161616;
+border-bottom: 2px solid #161616;
+}</string>
    </property>
    <property name="text">
     <string>G</string>
@@ -277,11 +340,19 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+border-left: none;
+border-right:none;
+border-top: 2px solid #161616;
+border-bottom: 2px solid #161616;
+}</string>
    </property>
    <property name="text">
     <string>B</string>
@@ -313,11 +384,36 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox{
+border:1px solid #318AFF;
+}
+
+QCheckBox::indicator:unchecked:hover{
+background-color: #161616;
+}
+
+QCheckBox::indicator:checked:hover{
+background-color: #2466BD;
+}
+QCheckBox::indicator:checked{
+background-color: #318AFF;
+position: relative;
+left: 7 px;
+}
+
+QCheckBox::indicator:unchecked{
+position: relative;
+left: 7 px;
+background-color: #262626;
+border:1px solid #318AFF;
+}</string>
    </property>
    <property name="text">
     <string>Italic</string>
@@ -346,11 +442,36 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox{
+border:1px solid #318AFF;
+}
+
+QCheckBox::indicator:unchecked:hover{
+background-color: #161616;
+}
+
+QCheckBox::indicator:checked:hover{
+background-color: #2466BD;
+}
+QCheckBox::indicator:checked{
+background-color: #318AFF;
+position: relative;
+left: 7 px;
+}
+
+QCheckBox::indicator:unchecked{
+position: relative;
+left: 7 px;
+background-color: #262626;
+border:1px solid #318AFF;
+}</string>
    </property>
    <property name="text">
     <string>Bold</string>
@@ -379,11 +500,37 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox{
+
+border:1px solid #318AFF;
+}
+
+QCheckBox::indicator:unchecked:hover{
+background-color: #161616;
+}
+
+QCheckBox::indicator:checked:hover{
+background-color: #2466BD;
+}
+QCheckBox::indicator:checked{
+background-color: #318AFF;
+position: relative;
+left: 7 px;
+}
+
+QCheckBox::indicator:unchecked{
+background-color: #262626;
+border:1px solid #318AFF;
+position: relative;
+left: 7 px;
+}</string>
    </property>
    <property name="text">
     <string>Underline</string>
@@ -410,8 +557,30 @@
      <height>30</height>
     </size>
    </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox{
+border-left:1px solid #318AFF;
+border-right:none;
+border-top:1px solid #318AFF;
+border-bottom:1px solid #318AFF;
+}
+
+QComboBox::drop-down {
+
+}
+
+QComboBox::down-arrow {
+image: url(:/images/images/CBArrow.png);
+}</string>
+   </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="saveButton">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -434,11 +603,19 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-left:none;
+border-right:none;
+border-top:1px solid #318AFF;
+border-bottom:1px solid #318AFF;
+}</string>
    </property>
    <property name="text">
     <string>Save</string>
@@ -447,7 +624,7 @@
   <widget class="QLineEdit" name="lineEdit_R">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>310</x>
      <y>130</y>
      <width>50</width>
      <height>30</height>
@@ -467,11 +644,19 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+border-left:none;
+border-right:none;
+border-top:1px solid #318AFF;
+border-bottom:1px solid #318AFF;
+}</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -480,7 +665,7 @@
   <widget class="QLineEdit" name="lineEdit_G">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>310</x>
      <y>170</y>
      <width>50</width>
      <height>30</height>
@@ -500,11 +685,19 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+border-left:none;
+border-right:none;
+border-top:1px solid #318AFF;
+border-bottom:1px solid #318AFF;
+}</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -513,7 +706,7 @@
   <widget class="QLineEdit" name="lineEdit_B">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>310</x>
      <y>210</y>
      <width>50</width>
      <height>30</height>
@@ -533,46 +726,73 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit{
+border-left:none;
+border-right:none;
+border-top:1px solid #318AFF;
+border-bottom:1px solid #318AFF;
+}</string>
+   </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="textEdit">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>460</y>
-     <width>390</width>
-     <height>120</height>
-    </rect>
    </property>
   </widget>
   <widget class="QLabel" name="colorPreview">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>369</x>
      <y>130</y>
-     <width>60</width>
+     <width>70</width>
      <height>110</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial Black</family>
+     <family>Consolas</family>
      <pointsize>8</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border:none;</string>
+   </property>
    <property name="text">
-    <string>Color 
-Preview</string>
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="textPreview">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>470</y>
+     <width>391</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <pointsize>28</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+border:1px solid #161616;
+}</string>
+   </property>
+   <property name="text">
+    <string>Text Preview</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

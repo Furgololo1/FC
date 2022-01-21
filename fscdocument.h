@@ -20,7 +20,7 @@ public:
     void SaveObjectsToFile();
     QList< FSCObject >* GetObjectsFromFile();
     void ReadFromFile();
-    FSCObject GetObjectByName(const QString &_name);
+    FSCObject *GetObjectByName(const QString &_name);
 
 
 private:

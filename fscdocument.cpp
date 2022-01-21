@@ -19,7 +19,7 @@ void FSCDocument::SaveObjectsToFile()
 {
     file = new QFile(path);
 
-    if(!file->open(QIODevice::WriteOnly)) return;
+    if(!file->open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
 
     QTextStream out(file);
 
@@ -70,7 +70,6 @@ void FSCDocument::ReadFromFile()
             else
                 obj->CreateValue(line.left(line.indexOf(':')), value);
 
-//            qDebug()<<"key: "<<line.left(line.indexOf(':')) << " value: " << value << " type: "<<type;
 
         }
         objects.push_back(*obj);
@@ -79,13 +78,13 @@ void FSCDocument::ReadFromFile()
     }
 }
 
-FSCObject FSCDocument::GetObjectByName(const QString &_name)
+FSCObject *FSCDocument::GetObjectByName(const QString &_name)
 {
     for(auto &obj : objects)
         if(obj.GetObjectName() == _name)
-            return obj;
+            return &obj;
 
-    return FSCObject();
+    return nullptr;
 }
 
 
