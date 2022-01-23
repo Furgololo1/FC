@@ -41,6 +41,8 @@ private slots:
 
     void on_cbUnderline_stateChanged(int arg1);
 
+    void on_manageKeywordButton_clicked();
+
 private:
     Ui::WHighlightPreferences *ui;
 

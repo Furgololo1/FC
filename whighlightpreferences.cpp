@@ -166,3 +166,25 @@ void WHighlightPreferences::on_cbUnderline_stateChanged(int arg1)
     ChangePreviewText();
 }
 
+
+void WHighlightPreferences::on_manageKeywordButton_clicked()
+{
+    static bool state = false;
+
+    if(state){
+        ui->stackedWidget->setCurrentIndex(0);
+        state = false;
+        ui->manageKeywordButton->setText("Manage Keywords");
+        ui->keywordsComboBox->clear();
+    }
+
+    else{
+        ui->stackedWidget->setCurrentIndex(1);
+        state = true;
+        ui->manageKeywordButton->setText("Show Preview Text Box");
+
+        for(auto &i : *document->GetObjectsFromFile())
+            ui->keywordsComboBox->addItem(i.GetObjectName());
+    }
+}
+
