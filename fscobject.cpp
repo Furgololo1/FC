@@ -65,20 +65,20 @@ void FSCObject::ChangeValue(const QString &key, bool val)
 }
 
 
-QString FSCObject::Data()
+QString *FSCObject::Data()
 {
-    QString data(objectName + "{\n");
+    QString *data = new QString(objectName + "{\n");
 
     for(const auto &iv : intvalues)
-        data.append(iv.first + ":" + QString::number(iv.second) + "|int^\n");
+        data->append(iv.first + ":" + QString::number(iv.second) + "|int^\n");
     for(const auto &dv : doublevalues)
-        data.append(dv.first + ":" + QString::number(dv.second) + "|double^\n");
+        data->append(dv.first + ":" + QString::number(dv.second) + "|double^\n");
     for(const auto &sv : stringvalues)
-        data.append(sv.first + ":" + sv.second + "|string^\n");
+        data->append(sv.first + ":" + sv.second + "|string^\n");
     for(const auto &bv : boolvalues)
-        data.append(bv.first + ":" + (bv.second == true ? "1" : "0") + "|bool^\n");
+        data->append(bv.first + ":" + (bv.second == true ? "1" : "0") + "|bool^\n");
 
-    data.append("}\n");
+    data->append("}\n");
 
     return data;
 }

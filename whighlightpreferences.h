@@ -43,6 +43,10 @@ private slots:
 
     void on_manageKeywordButton_clicked();
 
+    void on_createButton_clicked();
+
+    void on_RemovButton_clicked();
+
 private:
     Ui::WHighlightPreferences *ui;
 

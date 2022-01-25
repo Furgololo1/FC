@@ -11,11 +11,11 @@ WHighlightPreferences::WHighlightPreferences(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    connect(ui->languagesComboBox, &QComboBox::currentTextChanged, this, &WHighlightPreferences::on_ReadKeywords);
+    connect(ui->keywordList, &QListWidget::currentTextChanged, this, &WHighlightPreferences::on_ReadKeywordsValues);
+
     ReadLanguages();
     ReadFonts();
-
-    connect(ui->languagesComboBox, &QComboBox::textActivated, this, &WHighlightPreferences::on_ReadKeywords);
-    connect(ui->keywordList, &QListWidget::currentTextChanged, this, &WHighlightPreferences::on_ReadKeywordsValues);
   //  setWindowFlags( Qt::FramelessWindowHint );
 
 }
@@ -33,6 +33,8 @@ void WHighlightPreferences::ReadLanguages()
 
     for(const auto &i : dir.entryInfoList(QDir::Files))
         ui->languagesComboBox->addItem(i.baseName());
+
+    ui->languagesComboBox->setCurrentText(ui->languagesComboBox->itemText(0));
 }
 
 void WHighlightPreferences::ReadFonts()
@@ -166,7 +168,6 @@ void WHighlightPreferences::on_cbUnderline_stateChanged(int arg1)
     ChangePreviewText();
 }
 
-
 void WHighlightPreferences::on_manageKeywordButton_clicked()
 {
     static bool state = false;
@@ -186,5 +187,38 @@ void WHighlightPreferences::on_manageKeywordButton_clicked()
         for(auto &i : *document->GetObjectsFromFile())
             ui->keywordsComboBox->addItem(i.GetObjectName());
     }
+}
+
+void WHighlightPreferences::on_createButton_clicked()
+{
+    QString newKeyword(ui->newKeywordLE->text());
+    FSCObject obj(newKeyword);
+    obj.CreateValue("R", 255);
+    obj.CreateValue("G", 255);
+    obj.CreateValue("B", 255);
+    obj.CreateValue("keyword", newKeyword);
+    obj.CreateValue("font", QStringLiteral("Arial"));
+    obj.CreateValue("bold", false);
+    obj.CreateValue("italic", false);
+    obj.CreateValue("underline", false);
+
+    if(document){
+        document->AppendObject(obj);
+        document->SaveObjectsToFile();
+    }
+
+    ui->keywordsComboBox->addItem(newKeyword);
+    ui->keywordList->addItem(newKeyword);
+
+}
+
+void WHighlightPreferences::on_RemovButton_clicked()
+{
+    QString text = ui->keywordsComboBox->currentText();
+
+    document->RemoveObjectByName(text);
+    ui->keywordsComboBox->removeItem(ui->keywordsComboBox->currentIndex());
+    for(auto &i : ui->keywordList->findItems(text, Qt::MatchCaseSensitive))
+        ui->keywordList->removeItemWidget(i);
 }
 

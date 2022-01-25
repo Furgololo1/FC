@@ -23,11 +23,18 @@ public:
     void ChangeValue(const QString &key, bool val);
 
     QString GetObjectName(){return objectName;}
-    QString Data();
+    QString *Data();
     QVariant GetValue(const QString &key);
     void SetObjectName(const QString &_objectName){    objectName = _objectName;    }
     void DisplayData();
 
+    bool operator ==(const FSCObject& obj) const{
+        return objectName == obj.objectName;
+    }
+
+    friend QDebug operator <<(QDebug dbg, const FSCObject &obj) {
+        return dbg << obj.objectName;
+    }
 
 
 private:

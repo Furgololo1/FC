@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <QList>
 #include <QVariant>
+#include <algorithm>
 
 #include "fscobject.h"
 
@@ -21,6 +22,7 @@ public:
     QList< FSCObject >* GetObjectsFromFile();
     void ReadFromFile();
     FSCObject *GetObjectByName(const QString &_name);
+    void RemoveObjectByName(const QString &_name);
 
 
 private:

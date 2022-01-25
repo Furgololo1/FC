@@ -23,8 +23,8 @@ void FSCDocument::SaveObjectsToFile()
 
     QTextStream out(file);
 
-    for(auto &data : objects){
-        out<<data.Data();
+    for(auto data : objects){
+        out<<*data.Data();
     }
     file->close();
 }
@@ -87,10 +87,15 @@ FSCObject *FSCDocument::GetObjectByName(const QString &_name)
     return nullptr;
 }
 
+void FSCDocument::RemoveObjectByName(const QString &_name)
+{
+    for(auto &obj : objects)
+        if(obj.GetObjectName() == _name){
+            objects.removeOne(obj);
+        }
 
-
-
-
+    SaveObjectsToFile();
+}
 
 
 
