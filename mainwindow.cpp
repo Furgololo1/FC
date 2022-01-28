@@ -102,7 +102,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
 void MainWindow::on_pushButton_clicked()
 {
-    FSCDocument doc("config/C++.txt");
+//    FSCDocument doc("config/C++.txt");
 //    FSCObject obj1("int");
 //    obj1.CreateValue("keyword", QStringLiteral("//bint//b"));
 //    obj1.CreateValue("R", 40);
@@ -123,8 +123,15 @@ void MainWindow::on_pushButton_clicked()
 //     doc.AppendObject(obj2);
 //     doc.SaveObjectsToFile();
 
- //   qDebug()<<obj1.GetValue("font").toString();
-    doc.ReadFromFile();
+//    qDebug()<<obj1.GetValue("font").toString();
+//    doc.ReadFromFile();
+
+    QRegularExpression re(QStringLiteral("\\bint\\b"));
+    QRegularExpressionMatch match = re.match("double int char");
+
+    if(match.hasMatch())
+        qDebug()<<"Match";
+
 
 }
 
