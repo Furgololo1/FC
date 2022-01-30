@@ -19,7 +19,7 @@ public:
 
     void AppendObject(FSCObject &object);
     void SaveObjectsToFile();
-    QList< FSCObject >* GetObjectsFromFile();
+    QList< FSCObject > *GetObjectsFromFile();
     void ReadFromFile();
     FSCObject *GetObjectByName(const QString &_name);
     void RemoveObjectByName(const QString &_name);

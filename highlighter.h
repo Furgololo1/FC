@@ -8,6 +8,8 @@
 #include <QRegularExpressionMatchIterator>
 #include <QObject>
 #include <QFile>
+#include <fscdocument.h>
+#include <fscobject.h>
 
 #include "style_sheets.h"
 

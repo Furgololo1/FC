@@ -196,7 +196,7 @@ void WHighlightPreferences::on_createButton_clicked()
     obj.CreateValue("R", 255);
     obj.CreateValue("G", 255);
     obj.CreateValue("B", 255);
-    obj.CreateValue("keyword", "\\\\b" + newKeyword + "\\\\b");
+    obj.CreateValue("keyword", "\\b" + newKeyword + "\\b");
     obj.CreateValue("font", QStringLiteral("Arial"));
     obj.CreateValue("bold", false);
     obj.CreateValue("italic", false);
