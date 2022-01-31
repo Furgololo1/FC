@@ -13,12 +13,14 @@ Editor::Editor( QWidget *parent )
     texteditor = std::make_unique< QTextEdit >(parent);
 
     highlighter = new Highlighter(texteditor->document());
+    highlighter->LoadHighlightingRules("PlainText");
 
     QSize size = parent->size();
 
     texteditor->setFixedSize(size);
     texteditor->setStyleSheet(StyleSheetsGUI::editorStyle);
     texteditor->setTabStopDistance(35);
+    texteditor->setFontPointSize(16);
 
     texteditor->show();
 
@@ -32,14 +34,18 @@ Editor::Editor( const QString &filename, QWidget *parent )
 
     file = std::make_unique< QFile >(filename);
     texteditor = std::make_unique< QTextEdit >(parent);
+    qDebug() << "filename: " << filename;
 
     highlighter = new Highlighter(texteditor->document());
+    if(!highlighter->LoadHighlightingRules("C++"))
+        return;
 
     QSize size = parent->size();
 
     texteditor->setFixedSize(size);
     texteditor->setStyleSheet(StyleSheetsGUI::editorStyle);
     texteditor->setTabStopDistance(35);
+    texteditor->setFontPointSize(16);
 
     texteditor->show();
 
@@ -72,6 +78,9 @@ bool Editor::SaveFile()
 
 bool Editor::SaveFileAs()
 {
+    highlighter = new Highlighter(texteditor->document());
+    if(!highlighter->LoadHighlightingRules("C++"))
+        return false;
 
     return true;
 }

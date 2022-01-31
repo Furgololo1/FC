@@ -23,6 +23,7 @@ public:
     void ReadFromFile();
     FSCObject *GetObjectByName(const QString &_name);
     void RemoveObjectByName(const QString &_name);
+    int CountObjects(){ return objects.count(); }
 
 
 private:

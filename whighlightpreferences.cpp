@@ -110,6 +110,7 @@ void WHighlightPreferences::on_saveButton_clicked()
     fscobj->ChangeValue("R", r.toInt());
     fscobj->ChangeValue("G", g.toInt());
     fscobj->ChangeValue("B", b.toInt());
+    fscobj->ChangeValue("fontsize", fontsize);
 
     QString font = ui->fontComboBox->currentText();
     fscobj->ChangeValue("font", font.remove(font.length()-2, 2));
@@ -147,6 +148,12 @@ void WHighlightPreferences::on_lineEdit_B_textChanged(const QString &arg1)
 void WHighlightPreferences::on_fontComboBox_currentTextChanged(const QString &arg1)
 {
     font = arg1;
+    ChangePreviewText();
+}
+
+void WHighlightPreferences::on_fontSize_textChanged(const QString &arg1)
+{
+    fontsize = arg1.toInt();
     ChangePreviewText();
 }
 
@@ -221,4 +228,5 @@ void WHighlightPreferences::on_RemovButton_clicked()
     for(auto &i : ui->keywordList->findItems(text, Qt::MatchCaseSensitive))
         ui->keywordList->removeItemWidget(i);
 }
+
 

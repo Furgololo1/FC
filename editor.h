@@ -36,6 +36,8 @@ private:
     std::unique_ptr< QFile > file;
     std::unique_ptr< QTextEdit > texteditor;
 
+    QString language = "PlainText";
+
     Highlighter *highlighter;
 
     QWidget *parent = nullptr;

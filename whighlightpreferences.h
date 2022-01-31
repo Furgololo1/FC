@@ -47,6 +47,8 @@ private slots:
 
     void on_RemovButton_clicked();
 
+    void on_fontSize_textChanged(const QString &arg1);
+
 private:
     Ui::WHighlightPreferences *ui;
 
@@ -62,6 +64,7 @@ private:
     QString g = "0";
     QString b = "0";
     QString font = "Consolas";
+    int fontsize = 10;
     bool bold = false;
     bool italic = false;
     bool underline = false;

@@ -42,8 +42,6 @@ private slots:
     void on_OpenEditor(int index);
     void on_highlightPref();
 
-    void on_pushButton_clicked();
-
 private:
 
     QList< Editor* > editors;
