@@ -10,7 +10,10 @@ Editor::Editor()
 Editor::Editor( QWidget *parent )
 {
     this->parent = parent;
-    texteditor = std::make_unique< QTextEdit >(parent);
+    texteditor = std::make_unique< QPlainTextEdit >(parent);
+    texteditor->move(30,0);
+
+    linecounter = new LineCounter(parent);
 
     highlighter = new Highlighter(texteditor->document());
     highlighter->LoadHighlightingRules("PlainText");
@@ -20,11 +23,10 @@ Editor::Editor( QWidget *parent )
     texteditor->setFixedSize(size);
     texteditor->setStyleSheet(StyleSheetsGUI::editorStyle);
     texteditor->setTabStopDistance(35);
-    texteditor->setFontPointSize(16);
 
     texteditor->show();
 
-    OpenFileInEditor();
+  //  texteditor->connect(texteditor.get(), &QPlainTextEdit::blockCountChanged, linecounter, &LineCounter::LineNumbersChanged);
 
 }
 
@@ -33,11 +35,13 @@ Editor::Editor( const QString &filename, QWidget *parent )
     this->parent = parent;
 
     file = std::make_unique< QFile >(filename);
-    texteditor = std::make_unique< QTextEdit >(parent);
+    texteditor = std::make_unique< QPlainTextEdit >(parent);
+    texteditor->move(30,0);
+
     qDebug() << "filename: " << filename;
 
     highlighter = new Highlighter(texteditor->document());
-    if(!highlighter->LoadHighlightingRules("C++"))
+    if( !highlighter->LoadHighlightingRules("C++") )
         return;
 
     QSize size = parent->size();
@@ -45,11 +49,12 @@ Editor::Editor( const QString &filename, QWidget *parent )
     texteditor->setFixedSize(size);
     texteditor->setStyleSheet(StyleSheetsGUI::editorStyle);
     texteditor->setTabStopDistance(35);
-    texteditor->setFontPointSize(16);
 
     texteditor->show();
 
     OpenFileInEditor();
+
+//    texteditor->connect(texteditor.get(), &QPlainTextEdit::blockCountChanged, linecounter, &LineCounter::LineNumbersChanged);
 }
 
 Editor::~Editor()
@@ -59,7 +64,7 @@ Editor::~Editor()
 
 bool Editor::SaveFile()
 {
-    if(!file){
+    if( !file ){
         QString filters("*.cpp;; *.c;; *.cs;; *.html;; *.css;; *.php;; *.txt;;");
         QString defaultFilter("Text files (*.txt)");
         QString path = QFileDialog::getSaveFileName(parent, QFileDialog::tr("Save File"),
@@ -67,7 +72,7 @@ bool Editor::SaveFile()
         file = std::make_unique< QFile >(path);
     }
 
-    if(!file->open(QIODevice::WriteOnly)) return false;
+    if( !file->open(QIODevice::WriteOnly) ) return false;
 
     QTextStream stream(file.get());
 
@@ -78,8 +83,8 @@ bool Editor::SaveFile()
 
 bool Editor::SaveFileAs()
 {
-    highlighter = new Highlighter(texteditor->document());
-    if(!highlighter->LoadHighlightingRules("C++"))
+    highlighter = new Highlighter( texteditor->document() );
+    if( !highlighter->LoadHighlightingRules("C++") )
         return false;
 
     return true;
@@ -97,17 +102,14 @@ void Editor::on_newText()
 
 void Editor::OpenFileInEditor()
 {
-
-
     if(  !file   ) return;
 
     if( file->open(  QIODevice::ReadOnly )   ) {
 
-        texteditor->append(file->readAll());
+        texteditor->appendPlainText(file->readAll());
 
         file->close();
     }
 
-
-
+    linecounter->AddMultipleLines(texteditor->blockCount());
 }

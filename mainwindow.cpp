@@ -95,7 +95,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     ui->stackedWidget->resize(size.width()-50, size.height()-80);
 
     for(auto &e : editors)
-        e->on_resize(ui->stackedWidget->size().width(), ui->stackedWidget->size().height());
+        e->on_resize(ui->stackedWidget->size().width()-30, ui->stackedWidget->size().height());
 
 }
 

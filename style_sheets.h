@@ -20,7 +20,7 @@ namespace StyleSheetsGUI {
             );
 
     const QString editorStyle(
-            "QTextEdit{background-color: #262626; color: #EAF8F8; "
+            "QPlainTextEdit{background-color: #262626; color: #EAF8F8; "
             "border-left: 1px solid  #161616; border-top: none; border-bottom: none; border-right: none; "
             "font-family: Consolas; font-size: 16px;}"
             );
@@ -44,6 +44,11 @@ namespace StyleSheetsGUI {
             "QPushButton{border: 1px solid #161616; background-color: #161616; color: #318AFF;"
             "font-family: Consolas, 'Courier New', monospace; font-size: 16px; border-top: none; border-right:none;} "
             "QPushButton::hover{border: none; background-color: #161616; color: #318AFF;}"
+            );
+
+    const QString lineNumberStyle(
+            "QLabel{ border-top: 1px solid  #318AFF; border-bottom: none; border-right: none; border-left: none;"
+            "background-color: #161616; color: white;}"
             );
 
 }

@@ -1,13 +1,14 @@
 #ifndef EDITOR_H
 #define EDITOR_H
 
-#include <QTextEdit>
+#include <QPlainTextEdit>
 #include <QWidget>
 #include <QFile>
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <memory>
 
+#include "linecounter.h"
 #include "highlighter.h"
 
 
@@ -33,8 +34,12 @@ private slots:
 
 private:
 
+    int countLine = 0;
+
+    LineCounter *linecounter;
+
     std::unique_ptr< QFile > file;
-    std::unique_ptr< QTextEdit > texteditor;
+    std::unique_ptr< QPlainTextEdit > texteditor;
 
     QString language = "PlainText";
 

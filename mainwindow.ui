@@ -23,9 +23,9 @@ background-color: #262626;
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>9</x>
       <y>30</y>
-      <width>750</width>
+      <width>780</width>
       <height>550</height>
      </rect>
     </property>
