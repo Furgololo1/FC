@@ -51,6 +51,7 @@ private:
     QWidget *parent = nullptr;
 
     void OpenFileInEditor();
+    void Config();
 
 };
 

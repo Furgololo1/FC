@@ -7,38 +7,30 @@ Editor::Editor()
 
 }
 
-Editor::Editor( QWidget *parent )
+Editor::Editor( QWidget *_parent ): parent(_parent)
 {
-    this->parent = parent;
+   Config();
+
+}
+
+Editor::Editor( const QString &filename, QWidget *_parent ): parent(_parent)
+{
+    file = std::make_unique< QFile >(filename);
+    Config();
+    OpenFileInEditor();
+}
+
+Editor::~Editor()
+{
+
+}
+
+void Editor::Config()
+{
     texteditor = std::make_unique< QPlainTextEdit >(parent);
     texteditor->move(30,0);
 
     linecounter = new LineCounter(parent);
-
-    highlighter = new Highlighter(texteditor->document());
-    highlighter->LoadHighlightingRules("PlainText");
-
-    QSize size = parent->size();
-
-    texteditor->setFixedSize(size);
-    texteditor->setStyleSheet(StyleSheetsGUI::editorStyle);
-    texteditor->setTabStopDistance(35);
-
-    texteditor->show();
-
-    connect(texteditor.get(), &QPlainTextEdit::blockCountChanged, this, &Editor::on_LineNumbersChanged);
-
-}
-
-Editor::Editor( const QString &filename, QWidget *parent )
-{
-    this->parent = parent;
-
-    file = std::make_unique< QFile >(filename);
-    texteditor = std::make_unique< QPlainTextEdit >(parent);
-    texteditor->move(30,0);
-
-    qDebug() << "filename: " << filename;
 
     highlighter = new Highlighter(texteditor->document());
     if( !highlighter->LoadHighlightingRules("C++") )
@@ -52,14 +44,7 @@ Editor::Editor( const QString &filename, QWidget *parent )
 
     texteditor->show();
 
-    OpenFileInEditor();
-
     connect(texteditor.get(), &QPlainTextEdit::blockCountChanged, this, &Editor::on_LineNumbersChanged);
-}
-
-Editor::~Editor()
-{
-
 }
 
 bool Editor::SaveFile()
@@ -118,3 +103,5 @@ void Editor::OpenFileInEditor()
 
     linecounter->AddMultipleLines(texteditor->blockCount());
 }
+
+
