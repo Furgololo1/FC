@@ -15,9 +15,8 @@ public:
     LineCounter(QWidget *_parent);
    ~LineCounter();
     void AddMultipleLines(int lines);
-
-public slots:
     void LineNumbersChanged(int numbers);
+
 
 private:
     int count = 0;

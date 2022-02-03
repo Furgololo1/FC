@@ -7,13 +7,15 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <memory>
+#include <QObject>
 
 #include "linecounter.h"
 #include "highlighter.h"
 
 
-class Editor
+class Editor: public QObject
 {
+    Q_OBJECT
 
 public:
     Editor();
@@ -31,6 +33,7 @@ public slots:
 private slots:
 
     void on_newText();
+    void on_LineNumbersChanged(int line);
 
 private:
 

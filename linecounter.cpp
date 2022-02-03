@@ -7,7 +7,7 @@ LineCounter::LineCounter()
 
 LineCounter::LineCounter(QWidget *_parent): parent(_parent)
 {
-
+    AddLine();
 }
 
 LineCounter::~LineCounter()
@@ -30,6 +30,7 @@ void LineCounter::AddLine()
 
 void LineCounter::RemoveLine()
 {
+    count--;
     delete lineNumber.last();
     lineNumber.removeLast();
 }

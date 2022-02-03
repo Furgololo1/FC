@@ -26,7 +26,7 @@ Editor::Editor( QWidget *parent )
 
     texteditor->show();
 
-  //  texteditor->connect(texteditor.get(), &QPlainTextEdit::blockCountChanged, linecounter, &LineCounter::LineNumbersChanged);
+    connect(texteditor.get(), &QPlainTextEdit::blockCountChanged, this, &Editor::on_LineNumbersChanged);
 
 }
 
@@ -54,7 +54,7 @@ Editor::Editor( const QString &filename, QWidget *parent )
 
     OpenFileInEditor();
 
-//    texteditor->connect(texteditor.get(), &QPlainTextEdit::blockCountChanged, linecounter, &LineCounter::LineNumbersChanged);
+    connect(texteditor.get(), &QPlainTextEdit::blockCountChanged, this, &Editor::on_LineNumbersChanged);
 }
 
 Editor::~Editor()
@@ -98,6 +98,11 @@ void Editor::on_resize(int w, int h)
 void Editor::on_newText()
 {
 
+}
+
+void Editor::on_LineNumbersChanged(int line)
+{
+    linecounter->LineNumbersChanged(line);
 }
 
 void Editor::OpenFileInEditor()
