@@ -40,6 +40,8 @@ QLabel *LineCounter::CreateLabel()
     count++;
     temp->setText(QString::number(count));
     lineNumber.push_back(temp);
+
+    return temp;
 }
 
 void LineCounter::LineNumbersChanged(int numbers)
