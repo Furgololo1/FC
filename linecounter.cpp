@@ -2,10 +2,10 @@
 
 LineCounter::LineCounter()
 {
-
+    AddLine();
 }
 
-LineCounter::LineCounter(QWidget *_parent): parent(_parent)
+LineCounter::LineCounter(QVBoxLayout *_vlayout): vlayout(_vlayout)
 {
     AddLine();
 }
@@ -17,22 +17,29 @@ LineCounter::~LineCounter()
 
 void LineCounter::AddLine()
 {
-    QLabel *temp = new QLabel(parent);
-    temp->move(0, 22 * count + 3);
-    temp->resize(30,22);
-    temp->setStyleSheet(StyleSheetsGUI::lineNumberStyle);
-    count++;
-    temp->setText(QString::number(count));
-    temp->show();
-
-    lineNumber.push_back(temp);
+    if(count < 1)
+        vlayout->addWidget(CreateLabel());
+    else
+        vlayout->insertWidget(count-1, CreateLabel());
 }
 
 void LineCounter::RemoveLine()
 {
     count--;
+    vlayout->removeWidget(lineNumber.last());
     delete lineNumber.last();
     lineNumber.removeLast();
+}
+
+QLabel *LineCounter::CreateLabel()
+{
+    QLabel *temp = new QLabel();
+    temp->setAlignment(Qt::AlignCenter);
+    temp->setMinimumSize(30,22);
+    temp->setStyleSheet(StyleSheetsGUI::lineNumberStyle);
+    count++;
+    temp->setText(QString::number(count));
+    lineNumber.push_back(temp);
 }
 
 void LineCounter::LineNumbersChanged(int numbers)
@@ -46,17 +53,7 @@ void LineCounter::LineNumbersChanged(int numbers)
 
 void LineCounter::AddMultipleLines(int lines)
 {
-    QLabel *temp;
 
-    for(int i = 0; i < lines; i++){
-        temp = new QLabel(parent);
-        temp->move(0, 22 * count + 3);
-        temp->resize(30,22);
-        temp->setStyleSheet(StyleSheetsGUI::lineNumberStyle);
-        count++;
-        temp->setText(QString::number(count));
-        temp->show();
-
-        lineNumber.push_back(temp);
-    }
+    for(int i = 0; i < lines; i++)
+        vlayout->insertWidget(count-1, CreateLabel());
 }

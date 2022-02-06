@@ -9,7 +9,6 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    editor.cpp \
     editorbutton.cpp \
     highlighter.cpp \
     linecounter.cpp \
@@ -18,10 +17,10 @@ SOURCES += \
     mainwindowslots.cpp \
     fscdocument.cpp \
     fscobject.cpp \
+    texteditor.cpp \
     whighlightpreferences.cpp
 
 HEADERS += \
-    editor.h \
     editorbutton.h \
     highlighter.h \
     linecounter.h \
@@ -29,10 +28,12 @@ HEADERS += \
     style_sheets.h \
     fscdocument.h \
     fscobject.h \
+    texteditor.h \
     whighlightpreferences.h
 
 FORMS += \
     mainwindow.ui \
+    texteditor.ui \
     whighlightpreferences.ui
 
 # Default rules for deployment.

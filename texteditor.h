@@ -1,7 +1,6 @@
-#ifndef EDITOR_H
-#define EDITOR_H
+#ifndef TEXTEDITOR_H
+#define TEXTEDITOR_H
 
-#include <QPlainTextEdit>
 #include <QWidget>
 #include <QFile>
 #include <QFileDialog>
@@ -11,17 +10,22 @@
 
 #include "linecounter.h"
 #include "highlighter.h"
+#include "style_sheets.h"
 
+namespace Ui {
+class TextEditor;
+}
 
-class Editor: public QObject
+class TextEditor : public QWidget
 {
     Q_OBJECT
 
 public:
-    Editor();
-    Editor(const QString &filename, QWidget *parent);
-    Editor(QWidget *parent);
-   ~Editor();
+    TextEditor();
+    TextEditor(const QString &filename, QWidget *parent);
+    TextEditor(QWidget *parent);
+    ~TextEditor();
+
 
     bool SaveFile();
     bool SaveFileAs();
@@ -36,13 +40,14 @@ private slots:
     void on_LineNumbersChanged(int line);
 
 private:
+    Ui::TextEditor *ui;
 
     int countLine = 0;
 
     LineCounter *linecounter;
 
     std::unique_ptr< QFile > file;
-    std::unique_ptr< QPlainTextEdit > texteditor;
+//    std::unique_ptr< QPlainTextEdit > texteditor;
 
     QString language = "PlainText";
 
@@ -52,7 +57,7 @@ private:
 
     void OpenFileInEditor();
     void Config();
-
+    void SetupScrollArea();
 };
 
-#endif // EDITOR_H
+#endif // TEXTEDITOR_H

@@ -27,7 +27,7 @@ void MainWindow::on_NewFile()
 
 void MainWindow::on_SaveFile()
 {
-   if(editors.at(ui->stackedWidget->currentIndex())->SaveFile()) return;
+   if(texteditors.at(ui->stackedWidget->currentIndex())->SaveFile()) return;
 }
 
 void MainWindow::on_SaveFileAs()

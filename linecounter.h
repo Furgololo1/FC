@@ -4,6 +4,8 @@
 #include <QLabel>
 #include <QWidget>
 #include <QList>
+#include <QVBoxLayout>
+#include <QSpacerItem>
 
 #include "style_sheets.h"
 
@@ -12,7 +14,7 @@ class LineCounter
 
 public:
     LineCounter();
-    LineCounter(QWidget *_parent);
+    LineCounter(QVBoxLayout *_vlayout);
    ~LineCounter();
     void AddMultipleLines(int lines);
     void LineNumbersChanged(int numbers);
@@ -24,10 +26,12 @@ private:
 
     void AddLine();
     void RemoveLine();
+    QLabel* CreateLabel();
 
     QList< QLabel *> lineNumber;
 
     QWidget *parent = nullptr;
+    QVBoxLayout *vlayout;
 
 };
 

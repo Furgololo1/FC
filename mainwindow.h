@@ -6,7 +6,7 @@
 #include <QStandardPaths>
 #include <QList>
 
-#include "editor.h"
+#include "texteditor.h"
 #include "editorbutton.h"
 #include "fscdocument.h"
 #include "fscobject.h"
@@ -44,7 +44,7 @@ private slots:
 
 private:
 
-    QList< Editor* > editors;
+    QList< TextEditor* > texteditors;
     QList< EditorButton *> buttonsToEditor;
 
     //button coords
