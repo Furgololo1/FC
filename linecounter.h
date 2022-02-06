@@ -22,11 +22,10 @@ public:
 
 private:
     int count = 0;
-    int y = 0;
 
     void AddLine();
     void RemoveLine();
-    QLabel* CreateLabel();
+    QLabel *CreateLabel();
 
     QList< QLabel *> lineNumber;
 

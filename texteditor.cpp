@@ -103,6 +103,7 @@ void TextEditor::OpenFileInEditor()
     }
 
     linecounter->AddMultipleLines(ui->editor->blockCount());
+    ui->editor->scroll(0,0);
 }
 
 void TextEditor::SetupScrollArea()

@@ -17,9 +17,7 @@ LineCounter::~LineCounter()
 
 void LineCounter::AddLine()
 {
-    if(count < 1)
-        vlayout->addWidget(CreateLabel());
-    else
+
         vlayout->insertWidget(count-1, CreateLabel());
 }
 
