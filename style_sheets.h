@@ -22,7 +22,7 @@ namespace StyleSheetsGUI {
     const QString editorStyle(
             "QPlainTextEdit{background-color: #262626; color: #EAF8F8; "
             "border-left: 1px solid  #161616; border-top: none; border-bottom: none; border-right: none; "
-            "font-family: Consolas; font-size: 16px;}"
+            "}"
             );
 
     const QString stackWidgetStyle(

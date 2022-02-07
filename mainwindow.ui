@@ -23,11 +23,17 @@ background-color: #262626;
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>9</x>
+      <x>0</x>
       <y>30</y>
-      <width>780</width>
+      <width>800</width>
       <height>550</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
    </widget>
   </widget>

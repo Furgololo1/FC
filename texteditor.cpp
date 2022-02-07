@@ -42,6 +42,8 @@ void TextEditor::Config()
 
     connect(ui->editor, &QPlainTextEdit::blockCountChanged, this, &TextEditor::on_LineNumbersChanged);
 
+    ReadGlobalSettings();
+
     linecounter = new LineCounter(ui->verticalLayout);
     ui->verticalLayout->setSpacing(0);
     ui->editor->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -81,11 +83,6 @@ void TextEditor::on_resize(int w, int h)
     this->setFixedSize(w, h);
 }
 
-void TextEditor::on_newText()
-{
-
-}
-
 void TextEditor::on_LineNumbersChanged(int line)
 {
    linecounter->LineNumbersChanged(line);
@@ -103,10 +100,28 @@ void TextEditor::OpenFileInEditor()
     }
 
     linecounter->AddMultipleLines(ui->editor->blockCount());
-    ui->editor->scroll(0,0);
+    ui->editor->moveCursor(QTextCursor::Start);
+    ui->editor->verticalScrollBar()->setDisabled(true);
+//    ui->scrollArea->verticalScrollBar()->setValue(0);
 }
 
-void TextEditor::SetupScrollArea()
+void TextEditor::ReadGlobalSettings()
 {
+    fscdocument = new FSCDocument("config/GlobalSettings.txt");
+    fscdocument->ReadFromFile();
+    FSCObject *obj = fscdocument->GetObjectByName("globalsettings");
+
+    ui->editor->setFont(QFont(obj->GetValue("font").toString(), obj->GetValue("fontsize").toInt()));
 
 }
+
+void TextEditor::wheelEvent(QWheelEvent *e)
+{
+    qDebug()<<"wheelEvent";
+}
+
+//follow the cursor
+
+
+
+

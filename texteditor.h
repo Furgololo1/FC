@@ -5,9 +5,12 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QStandardPaths>
+#include <QScrollBar>
 #include <memory>
 #include <QObject>
 
+#include "fscdocument.h"
+#include "fscobject.h"
 #include "linecounter.h"
 #include "highlighter.h"
 #include "style_sheets.h"
@@ -30,13 +33,19 @@ public:
     bool SaveFile();
     bool SaveFileAs();
 
+private:
+
+    void OpenFileInEditor();
+    void Config();
+    void ReadGlobalSettings();
+    void wheelEvent(QWheelEvent *e);
+
 public slots:
 
     void on_resize(int w, int h);
 
 private slots:
 
-    void on_newText();
     void on_LineNumbersChanged(int line);
 
 private:
@@ -54,10 +63,8 @@ private:
     Highlighter *highlighter;
 
     QWidget *parent = nullptr;
+    FSCDocument *fscdocument;
 
-    void OpenFileInEditor();
-    void Config();
-    void SetupScrollArea();
 };
 
 #endif // TEXTEDITOR_H

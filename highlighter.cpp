@@ -75,8 +75,8 @@ void Highlighter::ReadPatternFromObjects()
                 QBrush brush(color);
                 keywordFormat.setForeground(brush);
 
-                QFont font(pattern.GetValue("font").toString(), pattern.GetValue("fontsize").toInt());
-                keywordFormat.setFont(font);
+                //QFont font(pattern.GetValue("font").toString(), pattern.GetValue("fontsize").toInt());
+                //keywordFormat.setFont(font);
 
                 rule.format = keywordFormat;
                 highlightingRules.append(rule);
