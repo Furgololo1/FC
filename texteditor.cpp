@@ -41,12 +41,12 @@ void TextEditor::Config()
     ui->editor->setTabStopDistance(35);
 
     connect(ui->editor, &QPlainTextEdit::blockCountChanged, this, &TextEditor::on_LineNumbersChanged);
+    connect(ui->editor->verticalScrollBar(), &QAbstractSlider::valueChanged, this, &TextEditor::valueChanged);
 
     ReadGlobalSettings();
 
-    linecounter = new LineCounter(ui->verticalLayout);
-    ui->verticalLayout->setSpacing(0);
-    ui->editor->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    linecounter = new LineCounter(ui->vLayout);
+    ui->vLayout->setSpacing(0);
 
 }
 
@@ -56,7 +56,7 @@ bool TextEditor::SaveFile()
         QString filters("*.cpp;; *.c;; *.cs;; *.html;; *.css;; *.php;; *.txt;;");
         QString defaultFilter("Text files (*.txt)");
         QString path = QFileDialog::getSaveFileName(parent, QFileDialog::tr("Save File"),
-                                                    QDir::currentPath(), filters, &defaultFilter);
+                       QDir::currentPath(), filters, &defaultFilter);
         file = std::make_unique< QFile >(path);
     }
 
@@ -83,6 +83,12 @@ void TextEditor::on_resize(int w, int h)
     this->setFixedSize(w, h);
 }
 
+void TextEditor::valueChanged(int val)
+{
+    qDebug()<<"val "<<val;
+    ui->scrollArea->verticalScrollBar()->setValue((val*22)+3);
+}
+
 void TextEditor::on_LineNumbersChanged(int line)
 {
    linecounter->LineNumbersChanged(line);
@@ -101,8 +107,9 @@ void TextEditor::OpenFileInEditor()
 
     linecounter->AddMultipleLines(ui->editor->blockCount());
     ui->editor->moveCursor(QTextCursor::Start);
-    ui->editor->verticalScrollBar()->setDisabled(true);
-//    ui->scrollArea->verticalScrollBar()->setValue(0);
+    ui->editor->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+//    connect(ui->editor->verticalScrollBar(), &QAbstractSlider::valueChanged, this, &TextEditor::valueChanged);
+
 }
 
 void TextEditor::ReadGlobalSettings()
@@ -113,11 +120,6 @@ void TextEditor::ReadGlobalSettings()
 
     ui->editor->setFont(QFont(obj->GetValue("font").toString(), obj->GetValue("fontsize").toInt()));
 
-}
-
-void TextEditor::wheelEvent(QWheelEvent *e)
-{
-    qDebug()<<"wheelEvent";
 }
 
 //follow the cursor

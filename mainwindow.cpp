@@ -89,10 +89,10 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 {
     QSize size = this->size();
 
-    ui->stackedWidget->resize(size.width(), size.height()-20);
+    ui->stackedWidget->resize(size.width(), size.height());
 
     for(auto &e : texteditors)
-        e->on_resize(ui->stackedWidget->size().width(), ui->stackedWidget->size().height());
+        e->on_resize(ui->stackedWidget->size().width(), ui->stackedWidget->size().height()-80);
 
 }
 

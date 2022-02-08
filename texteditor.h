@@ -38,11 +38,11 @@ private:
     void OpenFileInEditor();
     void Config();
     void ReadGlobalSettings();
-    void wheelEvent(QWheelEvent *e);
 
 public slots:
 
     void on_resize(int w, int h);
+    void valueChanged(int val);
 
 private slots:
 
