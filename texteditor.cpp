@@ -43,6 +43,7 @@ void TextEditor::Config()
     connect(ui->editor, &QPlainTextEdit::blockCountChanged, this, &TextEditor::on_LineNumbersChanged);
     connect(ui->editor->verticalScrollBar(), &QAbstractSlider::valueChanged, this, &TextEditor::valueChanged);
 
+
     ReadGlobalSettings();
 
     linecounter = new LineCounter(ui->vLayout);
@@ -108,7 +109,6 @@ void TextEditor::OpenFileInEditor()
     linecounter->AddMultipleLines(ui->editor->blockCount());
     ui->editor->moveCursor(QTextCursor::Start);
     ui->editor->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-//    connect(ui->editor->verticalScrollBar(), &QAbstractSlider::valueChanged, this, &TextEditor::valueChanged);
 
 }
 
@@ -120,6 +120,12 @@ void TextEditor::ReadGlobalSettings()
 
     ui->editor->setFont(QFont(obj->GetValue("font").toString(), obj->GetValue("fontsize").toInt()));
 
+}
+
+void TextEditor::keyPressEvent(QKeyEvent *ev)
+{
+//        if (ev->key() == Qt::Key_0)
+            qDebug()<<QKeySequence(ev->key()).toString();
 }
 
 //follow the cursor

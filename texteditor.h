@@ -38,6 +38,7 @@ private:
     void OpenFileInEditor();
     void Config();
     void ReadGlobalSettings();
+    void keyPressEvent(QKeyEvent * ev);
 
 public slots:
 

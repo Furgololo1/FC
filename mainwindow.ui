@@ -24,9 +24,9 @@ background-color: #262626;
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>30</y>
+      <y>29</y>
       <width>800</width>
-      <height>550</height>
+      <height>540</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -69,7 +69,6 @@ background-color: #262626;
    <addaction name="menuEdit"/>
    <addaction name="menuPreferences"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="newFile">
    <property name="checkable">
     <bool>false</bool>

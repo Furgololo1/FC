@@ -25,10 +25,55 @@
      <item>
       <widget class="QPlainTextEdit" name="editor">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>550</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+QScrollBar:vertical {
+     border: none;
+     background: #262626;
+     width: 15px;
+     margin: 22px 0 22px 0;
+ }
+ QScrollBar::handle:vertical {
+     background: #318AFF;
+     min-height: 20px;
+ }
+ QScrollBar::add-line:vertical {
+     border: 1px solid #318AFF;
+     background: #262626;
+     height: 20px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:vertical {
+     border: 1px solid #318AFF;
+     background: #262626;
+     height: 20px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+     border: 2px solid #262626;
+     width: 3px;
+     height: 3px;
+     background: transparent;
+ }
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }
+</string>
        </property>
       </widget>
      </item>
@@ -45,7 +90,7 @@
      <item>
       <widget class="QScrollArea" name="scrollArea">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -62,6 +107,12 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QScrollArea{
+background-color: #161616;
+border: none;
+}</string>
+       </property>
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -76,9 +127,15 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>28</width>
-          <height>532</height>
+          <width>30</width>
+          <height>534</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{
+border: none;
+background-color: #161616;
+}</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_9">
          <property name="spacing">

@@ -47,17 +47,23 @@ void MainWindow::ConfigureGUI()
 void MainWindow::CreateEditor(const QString &filename)
 {
     static int i = 0;
-     //new tab for editor
-    TextEditor *newTab = new TextEditor(filename, ui->stackedWidget);
 
-     ui->stackedWidget->addWidget( newTab );
-     newTab->setStyleSheet(StyleSheetsGUI::widgetStyle);
+     //new tab for editor
+    TextEditor *newTextEditor;
+    if(filename == nullptr)
+        newTextEditor = new TextEditor( ui->stackedWidget);
+    else
+        newTextEditor = new TextEditor(filename, ui->stackedWidget);
+
+
+     ui->stackedWidget->addWidget( newTextEditor );
+     newTextEditor->setStyleSheet(StyleSheetsGUI::editorStyle);
 
      //new editor
      if(filename == nullptr)
-        texteditors.emplaceBack(newTab);
+        texteditors.emplaceBack(newTextEditor);
      else
-        texteditors.emplaceBack(newTab);
+        texteditors.emplaceBack(newTextEditor);
 
      CreateButton(i);
      i++;
@@ -76,7 +82,7 @@ void MainWindow::CreateButton(int index)
     else
         ptrbutton->setStyleSheet(StyleSheetsGUI::editorButtonStyle);
 
-    ptrbutton->setFixedSize(80,30);
+    ptrbutton->setFixedSize(80,29);
     ptrbutton->move(buttonx * buttonsToEditor.size(), buttony);
     ptrbutton->show();
     ptrbutton->connect(ptrbutton, &EditorButton::clicked, this, [=](){  this->on_OpenEditor(ptrbutton->GetEditorIndex());   });
@@ -89,11 +95,13 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 {
     QSize size = this->size();
 
-    ui->stackedWidget->resize(size.width(), size.height());
+    ui->stackedWidget->resize(size.width(), size.height()-50);
 
-    for(auto &e : texteditors)
-        e->on_resize(ui->stackedWidget->size().width(), ui->stackedWidget->size().height()-80);
+   // for(auto &e : texteditors)
+        //e->on_resize(ui->stackedWidget->size().width(), ui->stackedWidget->size().height()-80);
+     //   e->resize(ui->stackedWidget->size().width(), ui->stackedWidget->size().height()-70);
 
 }
+
 
 
