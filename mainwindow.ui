@@ -15,9 +15,9 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{
-background-color: #262626;
-
-}</string>
+	background-color: #262626;
+}
+   </string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QStackedWidget" name="stackedWidget">
@@ -34,6 +34,9 @@ background-color: #262626;
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
     </property>
    </widget>
   </widget>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>712</width>
-    <height>556</height>
+    <height>570</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,6 +18,44 @@
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">      QPlainTextEdit{background-color: #262626; color: #EAF8F8; 
+            border: 1px solid #318AFF; }
+            QScrollBar:vertical {
+                 border: none;
+                 background: #262626;
+                 width: 15px;
+                 margin: 22px 0 22px 0;
+             }
+             QScrollBar::handle:vertical {
+                 background: #318AFF;
+                 min-height: 20px;
+             }
+             QScrollBar::add-line:vertical {
+                 border: 1px solid #318AFF;
+                 background: #262626;
+                 height: 20px;
+                 subcontrol-position: bottom;
+                 subcontrol-origin: margin;
+             }
+            QScrollBar::sub-line:vertical {
+                 border: 1px solid #318AFF;
+                 background: #262626;
+                 height: 20px;
+                 subcontrol-position: top;
+                 subcontrol-origin: margin;
+             }
+             QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+                 border: 2px solid #262626;
+                 width: 3px;
+                 height: 3px;
+                 background: transparent;
+             }
+
+             QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+                 background: none;
+             }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="1">
@@ -37,43 +75,7 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">
-QScrollBar:vertical {
-     border: none;
-     background: #262626;
-     width: 15px;
-     margin: 22px 0 22px 0;
- }
- QScrollBar::handle:vertical {
-     background: #318AFF;
-     min-height: 20px;
- }
- QScrollBar::add-line:vertical {
-     border: 1px solid #318AFF;
-     background: #262626;
-     height: 20px;
-     subcontrol-position: bottom;
-     subcontrol-origin: margin;
- }
-
- QScrollBar::sub-line:vertical {
-     border: 1px solid #318AFF;
-     background: #262626;
-     height: 20px;
-     subcontrol-position: top;
-     subcontrol-origin: margin;
- }
- QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-     border: 2px solid #262626;
-     width: 3px;
-     height: 3px;
-     background: transparent;
- }
-
- QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-     background: none;
- }
-</string>
+        <string notr="true"/>
        </property>
       </widget>
      </item>
@@ -128,7 +130,7 @@ border: none;
           <x>0</x>
           <y>0</y>
           <width>30</width>
-          <height>534</height>
+          <height>548</height>
          </rect>
         </property>
         <property name="styleSheet">

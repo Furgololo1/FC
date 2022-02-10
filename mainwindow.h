@@ -32,7 +32,7 @@ private:
     void resizeEvent(QResizeEvent*);
     void Connections();
     void CreateEditor(const QString &);
-    void CreateButton(int index);
+    EditorButton* CreateButton(int index);
 
 private slots:
     void on_OpenFile();

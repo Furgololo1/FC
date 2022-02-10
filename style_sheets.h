@@ -19,45 +19,6 @@ namespace StyleSheetsGUI {
             "QMenu::item::selected{background-color: #161616; color: #318AFF;}"
             );
 
-    const QString editorStyle(
-            "QPlainTextEdit{background-color: #262626; color: #EAF8F8; "
-            "border: 1px solid #318AFF; }"
-            "QScrollBar:vertical {"
-             "    border: none;"
-                 "background: #262626;"
-                 "width: 15px;"
-                 "margin: 22px 0 22px 0;"
-             "}"
-             "QScrollBar::handle:vertical {"
-                 "background: #318AFF;"
-                 "min-height: 20px;"
-             "}"
-             "QScrollBar::add-line:vertical {"
-                 "border: 1px solid #318AFF;"
-                 "background: #262626;"
-                 "height: 20px;"
-                 "subcontrol-position: bottom;"
-                 "subcontrol-origin: margin;"
-             "}"
-            "QScrollBar::sub-line:vertical {"
-                 "border: 1px solid #318AFF;"
-                 "background: #262626;"
-                 "height: 20px;"
-                 "subcontrol-position: top;"
-                 "subcontrol-origin: margin;"
-             "}"
-             "QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {"
-                 "border: 2px solid #262626;"
-                 "width: 3px;"
-                 "height: 3px;"
-                 "background: transparent;"
-             "}"
-
-             "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
-                 "background: none;"
-             "}"
-            );
-
     const QString stackWidgetStyle(
             "QStackedWidget{border: none;"
             "background-color: transparent;}"
@@ -69,13 +30,13 @@ namespace StyleSheetsGUI {
 
     const QString editorButtonStyle(
             "QPushButton{border: 1px solid #161616; background-color: #262626; color: white;"
-            "font-family: Consolas, 'Courier New', monospace; font-size: 16px; border-top: none; border-right:none;} "
+            "font-family: Consolas, 'Courier New', monospace; font-size: 12px; border-top: none; border-right:none;} "
             "QPushButton::hover{border: none; background-color: #161616; color: white;}"
             );
 
     const QString currentEditorButtonStyle(
             "QPushButton{border: 1px solid #161616; background-color: #161616; color: #318AFF;"
-            "font-family: Consolas, 'Courier New', monospace; font-size: 16px; border-top: none; border-right:none;} "
+            "font-family: Consolas, 'Courier New', monospace; font-size: 12px; border-top: none; border-right:none;} "
             "QPushButton::hover{border: none; background-color: #161616; color: #318AFF;}"
             );
 

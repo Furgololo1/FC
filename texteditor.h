@@ -10,6 +10,7 @@
 #include <QObject>
 
 #include "fscdocument.h"
+#include "editorbutton.h"
 #include "fscobject.h"
 #include "linecounter.h"
 #include "highlighter.h"
@@ -25,25 +26,26 @@ class TextEditor : public QWidget
 
 public:
     TextEditor();
-    TextEditor(const QString &filename, QWidget *parent);
-    TextEditor(QWidget *parent);
+    TextEditor(const QString &filename, QWidget *parent, EditorButton *_button);
+    TextEditor(QWidget *parent, EditorButton *_button);
     ~TextEditor();
-
 
     bool SaveFile();
     bool SaveFileAs();
+
+    [[noreturn]] void CloseEditor();
 
 private:
 
     void OpenFileInEditor();
     void Config();
     void ReadGlobalSettings();
-    void keyPressEvent(QKeyEvent * ev);
 
 public slots:
 
     void on_resize(int w, int h);
     void valueChanged(int val);
+    void cursourPositionChanged();
 
 private slots:
 
@@ -57,9 +59,9 @@ private:
     LineCounter *linecounter;
 
     std::unique_ptr< QFile > file;
-//    std::unique_ptr< QPlainTextEdit > texteditor;
 
     QString language = "PlainText";
+    EditorButton* button;
 
     Highlighter *highlighter;
 

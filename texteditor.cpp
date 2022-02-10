@@ -7,9 +7,10 @@ TextEditor::TextEditor()
 
 }
 
-TextEditor::TextEditor(const QString &filename, QWidget *parent):
+TextEditor::TextEditor(const QString &filename, QWidget *parent, EditorButton *_button):
     QWidget(parent),
-    ui(new Ui::TextEditor)
+    ui(new Ui::TextEditor),
+    button(_button)
 {
     ui->setupUi(this);
     file = std::make_unique< QFile >(filename);
@@ -17,9 +18,10 @@ TextEditor::TextEditor(const QString &filename, QWidget *parent):
     OpenFileInEditor();
 }
 
-TextEditor::TextEditor(QWidget *parent) :
+TextEditor::TextEditor(QWidget *parent, EditorButton *_button) :
     QWidget(parent),
-    ui(new Ui::TextEditor)
+    ui(new Ui::TextEditor),
+    button(_button)
 {
     ui->setupUi(this);
     Config();
@@ -27,6 +29,9 @@ TextEditor::TextEditor(QWidget *parent) :
 
 TextEditor::~TextEditor()
 {
+    delete linecounter;
+    delete highlighter;
+    delete fscdocument;
     delete ui;
 }
 
@@ -37,12 +42,11 @@ void TextEditor::Config()
     if( !highlighter->LoadHighlightingRules("C++") ) //should be variable language instead of "C++"
         return;
 
-    ui->editor->setStyleSheet(StyleSheetsGUI::editorStyle);
     ui->editor->setTabStopDistance(35);
 
     connect(ui->editor, &QPlainTextEdit::blockCountChanged, this, &TextEditor::on_LineNumbersChanged);
     connect(ui->editor->verticalScrollBar(), &QAbstractSlider::valueChanged, this, &TextEditor::valueChanged);
-
+    connect(ui->editor, &QPlainTextEdit::cursorPositionChanged, this, &TextEditor::cursourPositionChanged);
 
     ReadGlobalSettings();
 
@@ -76,6 +80,8 @@ bool TextEditor::SaveFileAs()
     if( !highlighter->LoadHighlightingRules("C++") )
         return false;
 
+//    button->setText(file.get()->fileName());  you know what to do with this
+
     return true;
 }
 
@@ -88,6 +94,15 @@ void TextEditor::valueChanged(int val)
 {
     qDebug()<<"val "<<val;
     ui->scrollArea->verticalScrollBar()->setValue((val*22)+3);
+}
+
+void TextEditor::cursourPositionChanged()
+{
+    int value = ui->editor->verticalScrollBar()->value();
+    if(value == 0)
+        ui->scrollArea->verticalScrollBar()->setValue((value*22));
+    else
+        ui->scrollArea->verticalScrollBar()->setValue((value*22) + 3);
 }
 
 void TextEditor::on_LineNumbersChanged(int line)
@@ -106,6 +121,10 @@ void TextEditor::OpenFileInEditor()
         file->close();
     }
 
+    QString fileName = file.get()->fileName().mid(file.get()->fileName().lastIndexOf('/')+1);
+
+    button->setText(fileName);
+
     linecounter->AddMultipleLines(ui->editor->blockCount());
     ui->editor->moveCursor(QTextCursor::Start);
     ui->editor->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -120,12 +139,6 @@ void TextEditor::ReadGlobalSettings()
 
     ui->editor->setFont(QFont(obj->GetValue("font").toString(), obj->GetValue("fontsize").toInt()));
 
-}
-
-void TextEditor::keyPressEvent(QKeyEvent *ev)
-{
-//        if (ev->key() == Qt::Key_0)
-            qDebug()<<QKeySequence(ev->key()).toString();
 }
 
 //follow the cursor

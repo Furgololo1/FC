@@ -51,30 +51,23 @@ void MainWindow::CreateEditor(const QString &filename)
      //new tab for editor
     TextEditor *newTextEditor;
     if(filename == nullptr)
-        newTextEditor = new TextEditor( ui->stackedWidget);
+        newTextEditor = new TextEditor(ui->stackedWidget, CreateButton(i));
     else
-        newTextEditor = new TextEditor(filename, ui->stackedWidget);
+        newTextEditor = new TextEditor(filename, ui->stackedWidget, CreateButton(i));
 
+     ui->stackedWidget->addWidget(newTextEditor);
 
-     ui->stackedWidget->addWidget( newTextEditor );
-     newTextEditor->setStyleSheet(StyleSheetsGUI::editorStyle);
-
-     //new editor
-     if(filename == nullptr)
-        texteditors.emplaceBack(newTextEditor);
-     else
-        texteditors.emplaceBack(newTextEditor);
-
-     CreateButton(i);
+     texteditors.emplaceBack(newTextEditor);
+     on_OpenEditor(i);
      i++;
 }
 
-void MainWindow::CreateButton(int index)
+EditorButton* MainWindow::CreateButton(int index)
 {
     EditorButton* ptrbutton = new EditorButton();
 
     ptrbutton->setParent(this);
-    ptrbutton->setText("unnamed");
+    ptrbutton->setText("unnamed.txt");
     ptrbutton->SetEditorIndex(index);
 
     if(texteditors.count() <= 1)
@@ -82,12 +75,13 @@ void MainWindow::CreateButton(int index)
     else
         ptrbutton->setStyleSheet(StyleSheetsGUI::editorButtonStyle);
 
-    ptrbutton->setFixedSize(80,29);
+    ptrbutton->setFixedSize(80,38);
     ptrbutton->move(buttonx * buttonsToEditor.size(), buttony);
     ptrbutton->show();
     ptrbutton->connect(ptrbutton, &EditorButton::clicked, this, [=](){  this->on_OpenEditor(ptrbutton->GetEditorIndex());   });
 
     buttonsToEditor.push_back(ptrbutton);
+    return ptrbutton;
 
 }
 
@@ -102,6 +96,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
      //   e->resize(ui->stackedWidget->size().width(), ui->stackedWidget->size().height()-70);
 
 }
+
 
 
 
