@@ -11,7 +11,7 @@
 #include "fscdocument.h"
 #include "fscobject.h"
 #include "whighlightpreferences.h"
-//#include "style_sheets.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

@@ -14,7 +14,7 @@ TextEditor::TextEditor(const QString &filename, QWidget *parent, EditorButton *_
 {
     ui->setupUi(this);
     file = std::make_unique< QFile >(filename);
-    Config();
+    ConfigureEditor();
     OpenFileInEditor();
 }
 
@@ -24,7 +24,7 @@ TextEditor::TextEditor(QWidget *parent, EditorButton *_button) :
     button(_button)
 {
     ui->setupUi(this);
-    Config();
+    ConfigureEditor();
 }
 
 TextEditor::~TextEditor()
@@ -35,7 +35,7 @@ TextEditor::~TextEditor()
     delete ui;
 }
 
-void TextEditor::Config()
+void TextEditor::ConfigureEditor()
 {
 
     highlighter = new Highlighter(ui->editor->document());
@@ -43,6 +43,7 @@ void TextEditor::Config()
         return;
 
     ui->editor->setTabStopDistance(35);
+    ui->editor->viewport()->installEventFilter(this);
 
     connect(ui->editor, &QPlainTextEdit::blockCountChanged, this, &TextEditor::on_LineNumbersChanged);
     connect(ui->editor->verticalScrollBar(), &QAbstractSlider::valueChanged, this, &TextEditor::valueChanged);
@@ -90,15 +91,19 @@ void TextEditor::on_resize(int w, int h)
     this->setFixedSize(w, h);
 }
 
-void TextEditor::valueChanged(int val)
+void TextEditor::valueChanged(int value)
 {
-    qDebug()<<"val "<<val;
-    ui->scrollArea->verticalScrollBar()->setValue((val*22)+3);
+    qDebug()<<"val "<<value;
+    if(value == 0)
+         ui->scrollArea->verticalScrollBar()->setValue((value*22));
+    else
+        ui->scrollArea->verticalScrollBar()->setValue((value*22) + 3);
 }
 
 void TextEditor::cursourPositionChanged()
 {
     int value = ui->editor->verticalScrollBar()->value();
+    qDebug()<<"value "<<value;
     if(value == 0)
         ui->scrollArea->verticalScrollBar()->setValue((value*22));
     else
@@ -141,7 +146,44 @@ void TextEditor::ReadGlobalSettings()
 
 }
 
-//follow the cursor
+bool TextEditor::eventFilter(QObject *obj, QEvent *event)
+{
+    static short zoom = 0;
+
+    if( obj == ui->editor->viewport() && event->type() == QEvent::Wheel )
+    {
+
+        QWheelEvent *wheel = static_cast<QWheelEvent*>(event);
+        if( wheel->modifiers() == Qt::ControlModifier ){
+
+            ui->editor->verticalScrollBar()->setEnabled(false);
+
+            if(wheel->angleDelta().y() > 0){
+                if(zoom < 1){
+                    zoom++;
+                    ui->editor->zoomIn(2);
+                    linecounter->ChangeOneLineCountersHeight(3);
+                }
+            }
+            else{
+                if(zoom > -1){
+                    zoom--;
+                    ui->editor->zoomOut(2);
+                    linecounter->ChangeOneLineCountersHeight(-3);
+                }
+
+            }
+            qDebug()<<"Font size: "<<ui->editor->font();
+        }
+
+        else{
+            ui->editor->verticalScrollBar()->setEnabled(true);
+        }
+    }
+
+    return false;
+}
+
 
 
 

@@ -1,4 +1,4 @@
-#include "whighlightpreferences.h"
+ #include "whighlightpreferences.h"
 #include "ui_whighlightpreferences.h"
 
 #include <QStyledItemDelegate>

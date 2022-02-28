@@ -33,7 +33,7 @@ QLabel *LineCounter::CreateLabel()
 {
     QLabel *temp = new QLabel();
     temp->setAlignment(Qt::AlignCenter);
-    temp->setMinimumSize(30,22);
+    temp->setMinimumSize(width, height);
     temp->setStyleSheet(StyleSheetsGUI::lineNumberStyle);
     count++;
     temp->setText(QString::number(count));
@@ -49,6 +49,13 @@ void LineCounter::LineNumbersChanged(int numbers)
 
     else if(count > numbers)
         RemoveLine();
+}
+
+void LineCounter::ChangeOneLineCountersHeight(int value)
+{
+    multiplier += value;
+    for(QLabel* lbl : lineNumber)
+        lbl->setMinimumSize(width, height + multiplier);
 }
 
 void LineCounter::AddMultipleLines(int lines)

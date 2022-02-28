@@ -26,8 +26,8 @@ class TextEditor : public QWidget
 
 public:
     TextEditor();
-    TextEditor(const QString &filename, QWidget *parent, EditorButton *_button);
-    TextEditor(QWidget *parent, EditorButton *_button);
+    explicit TextEditor(const QString &filename, QWidget *parent, EditorButton *_button);
+    explicit TextEditor(QWidget *parent, EditorButton *_button);
     ~TextEditor();
 
     bool SaveFile();
@@ -38,13 +38,14 @@ public:
 private:
 
     void OpenFileInEditor();
-    void Config();
+    void ConfigureEditor();
     void ReadGlobalSettings();
+    bool eventFilter(QObject *object, QEvent *event);
 
 public slots:
 
     void on_resize(int w, int h);
-    void valueChanged(int val);
+    void valueChanged(int value);
     void cursourPositionChanged();
 
 private slots:
@@ -71,3 +72,4 @@ private:
 };
 
 #endif // TEXTEDITOR_H
+

@@ -30,13 +30,13 @@ namespace StyleSheetsGUI {
 
     const QString editorButtonStyle(
             "QPushButton{border: 1px solid #161616; background-color: #262626; color: white;"
-            "font-family: Consolas, 'Courier New', monospace; font-size: 12px; border-top: none; border-right:none;} "
+            "font-family: Consolas, 'Courier New', monospace; font-size: 12px; font-weight: bold; border-top: none; border-right:none;} "
             "QPushButton::hover{border: none; background-color: #161616; color: white;}"
             );
 
     const QString currentEditorButtonStyle(
             "QPushButton{border: 1px solid #161616; background-color: #161616; color: #318AFF;"
-            "font-family: Consolas, 'Courier New', monospace; font-size: 12px; border-top: none; border-right:none;} "
+            "font-family: Consolas, 'Courier New', monospace; font-size: 12px; font-weight: bold; border-top: none; border-right:none;} "
             "QPushButton::hover{border: none; background-color: #161616; color: #318AFF;}"
             );
 
