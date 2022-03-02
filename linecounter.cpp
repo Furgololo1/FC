@@ -58,6 +58,13 @@ void LineCounter::ChangeOneLineCountersHeight(int value)
         lbl->setMinimumSize(width, height + multiplier);
 }
 
+int LineCounter::GetSingleLineCounterHeight()
+{
+    if(lineNumber.at(0))
+        return lineNumber.at(0)->height();
+    return 0;
+}
+
 void LineCounter::AddMultipleLines(int lines)
 {
 

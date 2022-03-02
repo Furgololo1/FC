@@ -19,6 +19,7 @@ public:
     void AddMultipleLines(int lines);
     void LineNumbersChanged(int numbers);
     void ChangeOneLineCountersHeight(int value);
+    int GetSingleLineCounterHeight();
 
 
 private:

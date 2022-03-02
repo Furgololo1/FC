@@ -56,6 +56,7 @@ private:
     Ui::TextEditor *ui;
 
     int countLine = 0;
+    int zoom = 0;
 
     LineCounter *linecounter;
 

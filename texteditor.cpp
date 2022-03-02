@@ -93,21 +93,21 @@ void TextEditor::on_resize(int w, int h)
 
 void TextEditor::valueChanged(int value)
 {
-    qDebug()<<"val "<<value;
+    qDebug()<<"valueChanged value "<<value;
     if(value == 0)
-         ui->scrollArea->verticalScrollBar()->setValue((value*22));
+         ui->scrollArea->verticalScrollBar()->setValue((value*linecounter->GetSingleLineCounterHeight()));
     else
-        ui->scrollArea->verticalScrollBar()->setValue((value*22) + 3);
+        ui->scrollArea->verticalScrollBar()->setValue((value*linecounter->GetSingleLineCounterHeight()) + 3);
 }
 
 void TextEditor::cursourPositionChanged()
 {
     int value = ui->editor->verticalScrollBar()->value();
-    qDebug()<<"value "<<value;
+    qDebug()<<"cursourPositionChanged value "<<value;
     if(value == 0)
-        ui->scrollArea->verticalScrollBar()->setValue((value*22));
+        ui->scrollArea->verticalScrollBar()->setValue((value*linecounter->GetSingleLineCounterHeight()));
     else
-        ui->scrollArea->verticalScrollBar()->setValue((value*22) + 3);
+        ui->scrollArea->verticalScrollBar()->setValue((value*linecounter->GetSingleLineCounterHeight()) + 3);
 }
 
 void TextEditor::on_LineNumbersChanged(int line)
@@ -148,7 +148,6 @@ void TextEditor::ReadGlobalSettings()
 
 bool TextEditor::eventFilter(QObject *obj, QEvent *event)
 {
-    static short zoom = 0;
 
     if( obj == ui->editor->viewport() && event->type() == QEvent::Wheel )
     {
